@@ -173,21 +173,8 @@ body {
   color: #1f1d1a;
 }
 
-/* A right gutter the width of the floating buttons, on every page.
-   The buttons sit in that gutter, so they never cover a word, a pill,
-   a photo, or another button at 320, 390, or 1440. */
-:root {
-  --dock-inset: 4.5rem;
-}
-@media (min-width: 768px) {
-  :root {
-    --dock-inset: 5.25rem;
-  }
-}
-main,
-footer {
-  padding-inline-end: var(--dock-inset);
-}
+/* Full-width bands use the viewport. A right padding on main and footer
+   was pulling those bands in from the edge. */
 footer {
   padding-bottom: 1.25rem;
 }
@@ -642,29 +629,11 @@ summary:focus-visible {
   padding: 0 20px;
 }
 
-/* Revealed once the doorway has grown. The scrim lives inside the doorway
-   so it only darkens the photo, never the limewash beside it. */
-.hero-scrim,
+/* The caption sits under the photo, in the same column as the other text. */
 .hero-caption {
-  opacity: 1;
-}
-/* Phones: left-aligned, clear of the floating WhatsApp/call buttons */
-.hero-caption {
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 24px;
-}
-@media (min-width: 768px) {
-  .hero-caption {
-    left: 96px;
-    text-align: center;
-  }
-}
-@media (min-width: 1024px) {
-  .hero-caption {
-    bottom: 36px;
-  }
+  position: static;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
 }
 .hero-scrim {
   position: absolute;
@@ -895,6 +864,7 @@ html:has(dialog[open]) {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: var(--frame-h);
     align-items: end;
+    container-type: inline-size;
     --arch-hr: 0.92;
     --arch-wmax: 46vw;
   }
@@ -908,7 +878,7 @@ html:has(dialog[open]) {
     align-items: flex-start;
     justify-content: center;
     text-align: left;
-    padding: 2.5rem 2.5rem 2.5rem 0;
+    padding: 2.5rem 2.5rem 2.5rem max(5rem, calc((100cqi - 1280px) / 2 + 5rem));
   }
   .hero-copy .type-display {
     margin-left: 0;

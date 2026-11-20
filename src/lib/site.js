@@ -28,6 +28,7 @@ export const SITE = {
   address: {
     locality: "Hanamakonda",
     region: "Telangana",
+    postalCode: "506001",
     country: "IN",
   },
   // Structured-data service area: all of Telangana and Andhra Pradesh.

@@ -50,9 +50,8 @@ export default function HomeContent({ lang }) {
               </Link>
             </div>
           </div>
-
-          <p className="hero-caption type-small text-white/90">{t.home.heroCaption}</p>
         </div>
+        <p className={`${wrap} hero-caption type-small text-on-surface-muted`}>{t.home.heroCaption}</p>
       </section>
 
       <section id="overview" className={`${wrap} scroll-mt-(--nav-h) py-10 md:py-20`}>

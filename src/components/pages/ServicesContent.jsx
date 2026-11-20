@@ -87,8 +87,8 @@ export default function ServicesContent({ lang }) {
 
       <ClosingCta
         heading={sv.ctaHeading}
-        button={t.nav.portfolio}
-        href={localePath(lang, "/portfolio")}
+        button={t.nav.talk}
+        href={localePath(lang, "/contact")}
       />
     </>
   );
