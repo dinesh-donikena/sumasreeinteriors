@@ -27,7 +27,7 @@ export default function PortfolioContent({ lang }) {
     <>
       <PageHeader eyebrow={pf.projects[0].location} title={pf.title} intro={pf.intro} />
 
-      <section className={`${wrap} pb-24 md:pb-36`}>
+      <section className={`${wrap} pb-12 md:pb-20`}>
         <Gallery
           projects={PHOTOS.map((photo) => ({ ...photo, ...pf.projects[photo.index] }))}
           filters={Object.entries(pf.filters).map(([key, label]) => ({ key, label }))}

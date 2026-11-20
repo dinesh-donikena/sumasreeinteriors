@@ -5,7 +5,7 @@ import { wrap } from "@/lib/ui";
 export default function PageHeader({ eyebrow, title, intro, align = "center" }) {
   const centred = align === "center";
   return (
-    <header className={`${wrap} pt-20 pb-14 md:pt-28 md:pb-20 ${centred ? "text-center" : ""}`}>
+    <header className={`${wrap} pt-12 pb-8 md:pt-20 md:pb-12 ${centred ? "text-center" : ""}`}>
       {eyebrow && <p className={`eyebrow mb-5 ${centred ? "eyebrow-centred" : ""}`}>{eyebrow}</p>}
       <h1 className={`type-h1 text-primary mb-6 ${centred ? "mx-auto" : ""}`}>
         {title}

@@ -1,11 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useState } from "react";
-import { usePhotoLightbox } from "@/components/PhotoLightbox";
 import { curatedPhotos } from "@/lib/curated-photos";
 import { translations } from "@/lib/translations";
 import { wrap } from "@/lib/ui";
+
+const PhotoLightbox = dynamic(() => import("@/components/PhotoLightbox"), { ssr: false });
 
 // Option B, kept in this one file so the demo route can be deleted with it.
 // A sideways row you flick through, then the same full-screen viewer.
@@ -13,7 +15,6 @@ export default function GalleryOptionB({ lang }) {
   const copy = translations[lang].portfolio;
   const photos = curatedPhotos(copy.projects);
   const [open, setOpen] = useState(null);
-  const lightbox = usePhotoLightbox({ photos, open, setOpen, labels: copy.viewer });
 
   return (
     <section className={`${wrap} pt-20 pb-24 md:pt-28 md:pb-36`}>
@@ -27,7 +28,7 @@ export default function GalleryOptionB({ lang }) {
             <figure className="m-0">
               <button
                 type="button"
-                onClick={() => lightbox.show(i)}
+                onClick={() => setOpen(i)}
                 aria-label={`${copy.viewer.view}: ${photo.title}`}
                 className="block w-full cursor-zoom-in"
               >
@@ -52,7 +53,9 @@ export default function GalleryOptionB({ lang }) {
           </li>
         ))}
       </ul>
-      {lightbox.dialog}
+      {open !== null && (
+        <PhotoLightbox photos={photos} index={open} setIndex={setOpen} labels={copy.viewer} />
+      )}
     </section>
   );
 }

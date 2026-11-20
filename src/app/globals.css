@@ -32,8 +32,8 @@
   --color-error: #ba1a1a;
 
   /* Telugu Noto fonts as fallbacks — Latin fonts carry no Telugu glyphs */
-  --font-display: var(--font-fraunces), var(--font-noto-serif-telugu), serif;
-  --font-body: var(--font-dm-sans), var(--font-noto-sans-telugu), sans-serif;
+  --font-display: var(--font-fraunces, var(--font-noto-serif-telugu)), Georgia, serif;
+  --font-body: var(--font-dm-sans, var(--font-noto-sans-telugu)), sans-serif;
 }
 
 :root {
@@ -173,24 +173,26 @@ body {
   color: #1f1d1a;
 }
 
-/* The page scrolls the full viewport. The buttons float over the corner.
-   The footer padding lets the last line scroll clear of the stack, and
-   .dock-safe insets only the rows that run into that corner. */
+/* A right gutter the width of the floating buttons, on every page.
+   The buttons sit in that gutter, so they never cover a word, a pill,
+   a photo, or another button at 320, 390, or 1440. */
 :root {
-  --float-stack: calc(44px + 12px + 44px + 20px + env(safe-area-inset-bottom, 0px));
+  --dock-inset: 4.5rem;
 }
-/* The last line sits just above the page edge. Text rows keep a right
-   inset so the floating buttons land on empty footer, not on words. */
+@media (min-width: 768px) {
+  :root {
+    --dock-inset: 5.25rem;
+  }
+}
+main,
+footer {
+  padding-inline-end: var(--dock-inset);
+}
 footer {
   padding-bottom: 1.25rem;
 }
 .dock-safe {
-  padding-inline-end: 4.75rem;
-}
-@media (min-width: 1100px) {
-  .dock-safe {
-    padding-inline-end: 0;
-  }
+  padding-inline-end: 0;
 }
 
 /* One type scale. Mobile first; desktop sizes from 800px. */
@@ -265,11 +267,19 @@ footer {
   line-height: var(--text-small-lh);
   letter-spacing: var(--text-small-track);
 }
+.type-display em {
+  font-family: var(--font-fraunces-italic, var(--font-display));
+  font-style: italic;
+}
 :lang(te) .type-h1,
 :lang(te) .type-display,
 :lang(te) .type-h2,
 :lang(te) .type-h3 {
   line-height: 1.35;
+  font-weight: 600;
+}
+:lang(te) .type-small {
+  font-weight: 400;
 }
 
 /* Three buttons. Same height, padding, radius and type. */
@@ -336,21 +346,38 @@ footer {
   min-width: 48px;
   padding: 0;
 }
+.btn-stack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+@media (max-width: 767px) {
+  .btn:not(.btn-icon) {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  .btn-stack {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
 
 .process-steps {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 2.75rem;
+  gap: 1.25rem;
 }
 .process-num {
   display: block;
   font-family: var(--font-display), serif;
-  font-size: clamp(3.25rem, 7vw, 4.75rem);
+  font-size: clamp(2.25rem, 6vw, 3.25rem);
   line-height: 0.85;
   color: var(--color-accent);
-  margin-bottom: 1rem;
+  margin-bottom: 0.35rem;
 }
 @media (min-width: 800px) {
   .process-steps {
@@ -362,7 +389,7 @@ footer {
 .editorial-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem 1rem;
+  gap: 0.75rem 0.75rem;
 }
 .editorial-grid .span-2 {
   grid-column: span 2;
@@ -622,7 +649,7 @@ summary:focus-visible {
 .hero-caption {
   position: absolute;
   left: 20px;
-  right: 96px;
+  right: 20px;
   bottom: 24px;
 }
 @media (min-width: 768px) {
@@ -678,16 +705,15 @@ summary:focus-visible {
 /* Page transition — runs on every route change */
 @keyframes pageEnter {
   from {
-    opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(8px);
   }
   to {
-    opacity: 1;
     transform: none;
   }
 }
 .page-enter {
-  animation: pageEnter 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* No entrance fade. A hidden first frame was holding the largest paint back. */
+  animation: none;
 }
 
 /* The home page opening: label, headline, buttons and cue rise into place
@@ -810,22 +836,23 @@ html:has(dialog[open]) {
 
 /* Masonry grid */
 .masonry-grid {
-  column-count: 1;
-  column-gap: 28px;
-}
-@media (min-width: 768px) {
-  .masonry-grid {
-    column-count: 2;
-  }
+  column-count: 2;
+  column-gap: 12px;
 }
 @media (min-width: 1024px) {
   .masonry-grid {
     column-count: 3;
+    column-gap: 28px;
   }
 }
 .masonry-item {
   break-inside: avoid;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
+}
+@media (min-width: 1024px) {
+  .masonry-item {
+    margin-bottom: 40px;
+  }
 }
 
 /* Custom scrollbar */

@@ -1,5 +1,5 @@
 import SiteDocument from "@/components/SiteDocument";
-import { fontClasses } from "@/lib/fonts";
+import { teFontClasses } from "@/lib/fonts-te";
 import { siteMetadata, viewport } from "@/lib/seo";
 import "../globals.css";
 
@@ -10,7 +10,7 @@ export { viewport };
 
 export default function RootLayout({ children }) {
   return (
-    <SiteDocument lang="te" fontClasses={fontClasses}>
+    <SiteDocument lang="te" fontClasses={teFontClasses}>
       {children}
     </SiteDocument>
   );

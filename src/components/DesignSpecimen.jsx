@@ -18,7 +18,7 @@ export default function DesignSpecimen({ lang }) {
       <h3 className="type-h3 text-primary mb-8">{t.services.categories[0].title}</h3>
       <p className="type-small text-accent mb-3">Body</p>
       <p className="type-body text-on-surface-muted mb-10">{t.services.intro}</p>
-      <div className="flex flex-wrap gap-3">
+      <div className="btn-stack">
         <span className={btnPrimary}>{t.home.servicesMore}</span>
         <span className={btnSecondary}>{t.nav.portfolio}</span>
         <span className={btnWhatsApp}>

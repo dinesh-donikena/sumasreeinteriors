@@ -1,16 +1,16 @@
+import Link from "next/link";
 import ClosingCta from "@/components/ClosingCta";
 import PageHeader from "@/components/PageHeader";
 import ProcessSteps from "@/components/ProcessSteps";
 import ServiceGallery from "@/components/ServiceGallery";
-import { Tick } from "@/components/icons";
 import { curatedPhotos } from "@/lib/curated-photos";
 import { localePath } from "@/lib/i18n";
 import { translations } from "@/lib/translations";
-import { wrap } from "@/lib/ui";
+import { btnSecondary, wrap } from "@/lib/ui";
 
 // Services owns the work we do and the one way that work proceeds.
-// Photos of finished rooms live on Portfolio; this page shows a short
-// curated set so the lists are not only words.
+// Each list stays in the page, closed until it is opened. Six rooms sit
+// below, and the rest of the photos live on Portfolio.
 export default function ServicesContent({ lang }) {
   const t = translations[lang];
   const sv = t.services;
@@ -24,21 +24,22 @@ export default function ServicesContent({ lang }) {
     <>
       <PageHeader title={sv.title} intro={sv.intro} align="left" />
 
-      <section className={`${wrap} pb-16 md:pb-24 flex flex-col gap-14 md:gap-20`}>
+      <section className={`${wrap} pb-8`}>
         {sv.categories.map((cat, i) => (
-          <article key={cat.key} id={cat.key} className="border-t border-primary pt-6">
-            <p className="type-small text-accent mb-3">{String(i + 1).padStart(2, "0")}</p>
-            <h2 className="type-h2 text-primary mb-3">{cat.title}</h2>
-            <p className="type-body text-on-surface-muted mb-6">{cat.tagline}</p>
-            <ul className="dock-safe grid grid-cols-2 gap-x-6 gap-y-2">
+          <details key={cat.key} id={cat.key} className="faq-item border-t border-primary">
+            <summary className="py-3">
+              <span className="type-small text-accent">{String(i + 1).padStart(2, "0")}</span>
+              <span className="type-h3 text-primary block mt-1">{cat.title}</span>
+              <span className="type-body text-on-surface-muted block mt-1">{cat.tagline}</span>
+            </summary>
+            <ul className="grid grid-cols-2 gap-2 pb-4">
               {cat.items.map((item) => (
-                <li key={item} className="flex gap-3 type-body text-primary">
-                  <Tick />
+                <li key={item} className="type-small px-2 py-2 border border-outline-light bg-card text-primary">
                   {item}
                 </li>
               ))}
             </ul>
-          </article>
+          </details>
         ))}
       </section>
 
@@ -49,15 +50,20 @@ export default function ServicesContent({ lang }) {
         steps={steps}
       />
 
-      <section className={`${wrap} py-16 md:py-24`}>
+      <section className={`${wrap} py-8 md:py-12`}>
         <ServiceGallery photos={photos} labels={t.portfolio.viewer} />
+        <div className="btn-stack mt-6">
+          <Link href={localePath(lang, "/portfolio")} className={btnSecondary}>
+            {t.home.portfolioLink}
+          </Link>
+        </div>
       </section>
 
       <section className="bg-surface-low grain border-y border-outline-light/70">
-        <div className={`${wrap} py-14 md:py-20 grid grid-cols-1 lg:grid-cols-2 gap-12`}>
+        <div className={`${wrap} py-8 md:py-12 grid grid-cols-1 lg:grid-cols-2 gap-8`}>
           <div>
-            <h2 className="type-h2 text-primary mb-6">{sv.buildHeading}</h2>
-            <ul className="dock-safe flex flex-wrap gap-2">
+            <h2 className="type-h3 text-primary mb-4">{sv.buildHeading}</h2>
+            <ul className="flex flex-wrap gap-2">
               {sv.buildTypes.map((type) => (
                 <li key={type} className="type-small px-3 py-2 rounded-full border border-outline-light bg-card text-primary">
                   {type}
@@ -66,9 +72,9 @@ export default function ServicesContent({ lang }) {
             </ul>
           </div>
           <div>
-            <h2 className="type-h2 text-primary mb-3">{sv.areasHeading}</h2>
-            <p className="type-body text-on-surface-muted mb-5">{sv.areasText}</p>
-            <ul className="dock-safe flex flex-wrap gap-2">
+            <h2 className="type-h3 text-primary mb-3">{sv.areasHeading}</h2>
+            <p className="type-body text-on-surface-muted mb-4">{sv.areasText}</p>
+            <ul className="flex flex-wrap gap-2">
               {sv.areas.map((area) => (
                 <li key={area} className="type-small px-3 py-2 rounded-full border border-outline-light bg-card text-primary">
                   {area}
@@ -79,17 +85,17 @@ export default function ServicesContent({ lang }) {
         </div>
       </section>
 
-      <section className={`${wrap} dock-safe py-14 md:py-20`}>
-        <h2 className="type-h2 text-primary mb-3">{sv.materialsHeading}</h2>
-        <p className="type-body text-on-surface-muted mb-8">{sv.materialsNote}</p>
-        <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-5">
+      <section className={`${wrap} py-8 md:py-12`}>
+        <h2 className="type-h3 text-primary mb-2">{sv.materialsHeading}</h2>
+        <p className="type-body text-on-surface-muted mb-4">{sv.materialsNote}</p>
+        <ul>
           {sv.materials.map((m) => (
-            <div key={m.name} className="border-t border-outline-light pt-3">
-              <dt className="type-h3 text-primary">{m.name}</dt>
-              <dd className="type-small text-on-surface-muted mt-1">{m.brands}</dd>
-            </div>
+            <li key={m.name} className="flex flex-wrap gap-x-3 gap-y-0.5 border-t border-outline-light py-2">
+              <span className="type-small text-primary">{m.name}</span>
+              <span className="type-small text-on-surface-muted">{m.brands}</span>
+            </li>
           ))}
-        </dl>
+        </ul>
       </section>
 
       <ClosingCta

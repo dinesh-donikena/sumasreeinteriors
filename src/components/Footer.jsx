@@ -1,10 +1,9 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
-import { WhatsAppIcon } from "@/components/icons";
 import { localePath } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 import { translations } from "@/lib/translations";
-import { btnWhatsApp, wrap } from "@/lib/ui";
+import { wrap } from "@/lib/ui";
 
 const heading = "type-small block text-accent mb-5";
 const link =
@@ -16,7 +15,7 @@ export default function Footer({ lang }) {
 
   return (
     <footer className="bg-surface-container grain">
-      <div className={`${wrap} dock-safe grid grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-12 pt-20 pb-16`}>
+      <div className={`${wrap} grid grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-8 pt-12 pb-10`}>
         <div className="col-span-2 lg:col-span-5">
           <h2>
             <Logo lang={lang} large />
@@ -42,16 +41,7 @@ export default function Footer({ lang }) {
 
         <div className="lg:col-span-2 flex flex-col">
           <span className={heading}>{t.footer.connect}</span>
-          <a
-            href={SITE.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={btnWhatsApp}
-            aria-label={t.common.whatsappLabel}
-          >
-            <WhatsAppIcon className="w-5 h-5" />
-            WhatsApp
-          </a>
+          <p className="type-body text-on-surface-muted">{SITE.phoneDisplay}</p>
           {SITE.instagram && (
             <a
               href={SITE.instagram}
@@ -84,7 +74,7 @@ export default function Footer({ lang }) {
         </div>
       </div>
 
-      <div className={`${wrap} dock-safe`}>
+      <div className={wrap}>
         <p className="border-t border-outline-light py-6 text-xs font-semibold text-on-surface-muted">
           &copy; {new Date().getFullYear()} {t.brand.full}, {t.footer.city}. {t.footer.rights}
         </p>

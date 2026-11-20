@@ -31,8 +31,9 @@ export default function HomeContent({ lang }) {
               src="/portfolio/hanamakonda-tv-unit.jpg"
               alt={t.home.heroPhotoAlt}
               fill
-              preload
-              sizes="(min-width: 1024px) 45vw, 100vw"
+              fetchPriority="high"
+              loading="eager"
+              sizes="(min-width: 1024px) 420px, 60vw"
               className="object-cover"
             />
             <div className="hero-scrim" aria-hidden="true" />
@@ -44,7 +45,7 @@ export default function HomeContent({ lang }) {
               {t.home.heroTitle1}{" "}
               <em className="italic text-accent">{t.home.heroTitle2}</em>
             </h1>
-            <div className="flex flex-wrap justify-center mt-8">
+            <div className="btn-stack mt-8">
               <Link href={path("/services")} className={`${btnPrimary} group`}>
                 {t.home.servicesMore}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

@@ -1,7 +1,7 @@
 import ClosingCta from "@/components/ClosingCta";
 import EnquiryForm from "@/components/EnquiryForm";
 import PageHeader from "@/components/PageHeader";
-import { InstagramIcon, MailIcon, PinIcon, WhatsAppIcon } from "@/components/icons";
+import { InstagramIcon, MailIcon, PinIcon } from "@/components/icons";
 import { localePath } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 import { translations } from "@/lib/translations";
@@ -49,15 +49,12 @@ export default function ContactContent({ lang }) {
             <div>
               <h2 className={heading}>{c.infoHeading}</h2>
               <div className="space-y-5">
-                <Channel
-                  href={SITE.whatsapp}
-                  icon={<WhatsAppIcon />}
-                  note={c.hours}
-                  external
-                  label={t.common.whatsappLabel}
-                >
-                  {t.common.whatsappLabel}
-                </Channel>
+                <div className="flex items-center gap-4 min-h-11 py-1">
+                  <span>
+                    <span className="block text-base text-on-surface">{SITE.phoneDisplay}</span>
+                    <span className="block text-xs font-semibold text-on-surface-muted mt-0.5">{c.hours}</span>
+                  </span>
+                </div>
                 {SITE.email && (
                   <Channel href={`mailto:${SITE.email}`} icon={<MailIcon />}>
                     {SITE.email}

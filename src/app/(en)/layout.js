@@ -1,5 +1,5 @@
 import SiteDocument from "@/components/SiteDocument";
-import { fontClasses } from "@/lib/fonts";
+import { enFontClasses } from "@/lib/fonts-en";
 import { siteMetadata, viewport } from "@/lib/seo";
 import "../globals.css";
 
@@ -10,7 +10,7 @@ export { viewport };
 
 export default function RootLayout({ children }) {
   return (
-    <SiteDocument lang="en" fontClasses={fontClasses}>
+    <SiteDocument lang="en" fontClasses={enFontClasses}>
       {children}
     </SiteDocument>
   );
