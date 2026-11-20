@@ -41,7 +41,7 @@ export default function Footer({ lang }) {
 
         <div className="lg:col-span-2 flex flex-col">
           <span className={heading}>{t.footer.connect}</span>
-          <p className="type-body text-on-surface-muted">{SITE.phoneDisplay}</p>
+          <p className="footer-phone type-body text-on-surface-muted">{SITE.phoneDisplay}</p>
           {SITE.instagram && (
             <a
               href={SITE.instagram}
@@ -63,14 +63,6 @@ export default function Footer({ lang }) {
         <div className="col-span-2 lg:col-span-3">
           <span className={heading}>{t.footer.office}</span>
           <p className="text-on-surface-muted text-base leading-relaxed whitespace-pre-line">{t.footer.address}</p>
-          <a
-            href={SITE.mapsLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-primary border-b border-accent pb-0.5 hover:text-accent transition-colors"
-          >
-            {t.contact.openMap}
-          </a>
         </div>
       </div>
 

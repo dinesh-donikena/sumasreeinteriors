@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ClosingCta from "@/components/ClosingCta";
-import HeroScroll from "@/components/HeroScroll";
-import { ArrowDown, ArrowRight, Plus } from "@/components/icons";
+import { ArrowRight, Plus } from "@/components/icons";
 import { localePath } from "@/lib/i18n";
 import { translations } from "@/lib/translations";
 import { btnPrimary, wrap } from "@/lib/ui";
@@ -24,7 +23,6 @@ export default function HomeContent({ lang }) {
   return (
     <>
       <section className="hero-stage">
-        <HeroScroll />
         <div className="hero-frame">
           <div className="hero-door">
             <Image
@@ -33,7 +31,7 @@ export default function HomeContent({ lang }) {
               fill
               fetchPriority="high"
               loading="eager"
-              sizes="(min-width: 1024px) 420px, 60vw"
+              sizes="(min-width: 1024px) 50vw, 70vw"
               className="object-cover"
             />
             <div className="hero-scrim" aria-hidden="true" />
@@ -51,13 +49,6 @@ export default function HomeContent({ lang }) {
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
-            <a
-              href="#overview"
-              className="hero-cue mt-5 inline-flex items-center min-h-12 gap-2 type-small text-primary hover:text-accent transition-colors"
-            >
-              {t.home.heroCue}
-              <ArrowDown className="hero-cue-arrow w-4 h-4" />
-            </a>
           </div>
 
           <p className="hero-caption type-small text-white/90">{t.home.heroCaption}</p>

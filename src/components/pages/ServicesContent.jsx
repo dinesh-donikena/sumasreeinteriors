@@ -1,12 +1,9 @@
-import Link from "next/link";
 import ClosingCta from "@/components/ClosingCta";
 import PageHeader from "@/components/PageHeader";
 import ProcessSteps from "@/components/ProcessSteps";
-import ServiceGallery from "@/components/ServiceGallery";
-import { curatedPhotos } from "@/lib/curated-photos";
 import { localePath } from "@/lib/i18n";
 import { translations } from "@/lib/translations";
-import { btnSecondary, wrap } from "@/lib/ui";
+import { wrap } from "@/lib/ui";
 
 // Services owns the work we do and the one way that work proceeds.
 // Each list stays in the page, closed until it is opened. Six rooms sit
@@ -18,7 +15,6 @@ export default function ServicesContent({ lang }) {
     title,
     desc: t.testimonials.steps[i].desc,
   }));
-  const photos = curatedPhotos(t.portfolio.projects);
 
   return (
     <>
@@ -49,15 +45,6 @@ export default function ServicesContent({ lang }) {
         text={t.testimonials.processText}
         steps={steps}
       />
-
-      <section className={`${wrap} py-8 md:py-12`}>
-        <ServiceGallery photos={photos} labels={t.portfolio.viewer} />
-        <div className="btn-stack mt-6">
-          <Link href={localePath(lang, "/portfolio")} className={btnSecondary}>
-            {t.home.portfolioLink}
-          </Link>
-        </div>
-      </section>
 
       <section className="bg-surface-low grain border-y border-outline-light/70">
         <div className={`${wrap} py-8 md:py-12 grid grid-cols-1 lg:grid-cols-2 gap-8`}>

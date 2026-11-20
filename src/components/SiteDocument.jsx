@@ -32,7 +32,6 @@ const localBusinessSchema = {
     "@type": "PostalAddress",
     addressLocality: SITE.address.locality,
     addressRegion: SITE.address.region,
-    postalCode: SITE.address.postalCode,
     addressCountry: SITE.address.country,
   },
   areaServed: SITE.areasServed.map((name) => ({ "@type": "State", name })),

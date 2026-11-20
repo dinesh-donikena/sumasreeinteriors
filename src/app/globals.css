@@ -191,6 +191,9 @@ footer {
 footer {
   padding-bottom: 1.25rem;
 }
+:lang(te) .footer-phone {
+  white-space: nowrap;
+}
 .dock-safe {
   padding-inline-end: 0;
 }
@@ -643,7 +646,7 @@ summary:focus-visible {
    so it only darkens the photo, never the limewash beside it. */
 .hero-scrim,
 .hero-caption {
-  opacity: 0;
+  opacity: 1;
 }
 /* Phones: left-aligned, clear of the floating WhatsApp/call buttons */
 .hero-caption {
@@ -674,19 +677,8 @@ summary:focus-visible {
   );
 }
 
-/* The growth is driven by HeroScroll (a scroll listener) in every browser:
-   engines differ too much in CSS scroll-driven animation support, and the
-   animated values here are main-thread properties anyway. The script adds
-   .hero-js, which pins the frame while the doorway grows and then holds the
-   full image for a stretch, so even a quick swipe shows it. Reduced-motion
-   visitors (and no-JS) keep the still doorway. */
-.hero-stage.hero-js {
-  height: calc(100svh - var(--nav-h) + 80svh);
-}
-.hero-js .hero-frame {
-  position: sticky;
-  top: var(--nav-h);
-}
+/* The doorway does not reserve extra scroll. An 80svh sticky runway used to
+   leave a blank screen between the photo and the intro once JavaScript ran. */
 
 /* Scroll cue — a slow drift down, nothing louder */
 @keyframes cue {
@@ -881,19 +873,64 @@ html:has(dialog[open]) {
   transform: rotate(45deg);
 }
 
-/* The doorway is the first screen, not the whole story. */
+/* The doorway is the first screen, not the whole story. The copy starts
+   below the sticky header, so the eyebrow is not covered. */
 @media (max-width: 767px) {
   .hero-frame {
-    --frame-h: 68svh;
-    height: 68svh;
+    --frame-h: 72svh;
+    --arch-hr: 0.48;
+    height: 72svh;
   }
-  /* No extra scroll runway on a phone, so the overview follows the doorway. */
-  .hero-stage.hero-js {
-    height: auto;
+  .hero-copy {
+    justify-content: flex-start;
+    padding: 1.5rem 1.25rem 0;
   }
-  .hero-js .hero-frame {
+}
+
+/* From a laptop up, the words and the photo sit side by side and the arch
+   uses most of the hero height. */
+@media (min-width: 1024px) {
+  .hero-frame {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: var(--frame-h);
+    align-items: end;
+    --arch-hr: 0.92;
+    --arch-wmax: 46vw;
+  }
+  .hero-copy {
     position: relative;
-    top: auto;
+    inset: auto;
+    grid-column: 1;
+    grid-row: 1;
+    height: auto;
+    align-self: center;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    padding: 2.5rem 2.5rem 2.5rem 0;
+  }
+  .hero-copy .type-display {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .hero-copy .eyebrow-centred,
+  .hero-copy .btn-stack {
+    justify-content: flex-start;
+  }
+  .hero-door {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    align-self: end;
+    transform: none;
+    width: min(46vw, calc(var(--frame-h) * 0.62));
+    height: calc(var(--frame-h) * 0.9);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
   }
 }
 
