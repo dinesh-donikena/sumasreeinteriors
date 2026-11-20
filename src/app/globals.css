@@ -859,12 +859,17 @@ html:has(dialog[open]) {
 /* From a laptop up, the words and the photo sit side by side and the arch
    uses most of the hero height. */
 @media (min-width: 1024px) {
+  .hero-stage {
+    container-type: inline-size;
+    --frame-h: max(calc(100svh - var(--nav-h)), 560px);
+    --hero-gutter: max(5rem, calc((100cqi - 1280px) / 2 + 5rem));
+    --door-w: min(46vw, calc(var(--frame-h) * 0.62), calc(100cqi / 2 - var(--hero-gutter)));
+  }
   .hero-frame {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: var(--frame-h);
     align-items: end;
-    container-type: inline-size;
     --arch-hr: 0.92;
     --arch-wmax: 46vw;
   }
@@ -878,7 +883,7 @@ html:has(dialog[open]) {
     align-items: flex-start;
     justify-content: center;
     text-align: left;
-    padding: 2.5rem 2.5rem 2.5rem max(5rem, calc((100cqi - 1280px) / 2 + 5rem));
+    padding: 2.5rem 2.5rem 2.5rem var(--hero-gutter);
   }
   .hero-copy .type-display {
     margin-left: 0;
@@ -897,10 +902,21 @@ html:has(dialog[open]) {
     justify-self: end;
     align-self: end;
     transform: none;
-    width: min(46vw, calc(var(--frame-h) * 0.62));
+    width: var(--door-w);
     height: calc(var(--frame-h) * 0.9);
+    margin-right: var(--hero-gutter);
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
+  }
+  .hero-caption {
+    width: var(--door-w);
+    max-width: var(--door-w);
+    margin-top: 0.75rem;
+    margin-left: auto;
+    margin-right: var(--hero-gutter);
+    padding-left: 0;
+    padding-right: 0;
+    text-align: left;
   }
 }
 
