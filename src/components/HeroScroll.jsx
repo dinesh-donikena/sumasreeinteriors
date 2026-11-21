@@ -62,12 +62,6 @@ export default function HeroScroll() {
       const grow = easeInOut(clamp(y / (GROW * svh)));
       w = w0 + (wEnd - w0) * grow;
       frame.style.setProperty("--arch-w", `${w}px`);
-      const out = clamp(y / (COPY_OUT * svh));
-      copy.style.opacity = String(1 - out);
-      copy.style.transform = `translateY(${-28 * out}px)`;
-      copy.style.visibility = out >= 1 ? "hidden" : "";
-      const shown = clamp((y - CAPTION_FROM * svh) / ((CAPTION_TO - CAPTION_FROM) * svh));
-      fades.forEach((el) => (el.style.opacity = String(shown)));
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -94,8 +88,6 @@ export default function HeroScroll() {
       probe.remove();
       stage.classList.remove("hero-js");
       frame.style.removeProperty("--arch-w");
-      copy.removeAttribute("style");
-      fades.forEach((el) => el.style.removeProperty("opacity"));
     };
   }, []);
 
