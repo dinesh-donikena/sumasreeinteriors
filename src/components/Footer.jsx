@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "@/components/Logo";
+import { FacebookIcon, InstagramIcon, MailIcon, WhatsAppIcon } from "@/components/icons";
 import { localePath } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 import { translations } from "@/lib/translations";
@@ -12,11 +13,17 @@ const link =
 export default function Footer({ lang }) {
   const t = translations[lang];
   const path = (to) => localePath(lang, to);
+  const socials = [
+    { key: "whatsapp", href: SITE.whatsapp, Icon: WhatsAppIcon, label: t.common.whatsappLabel, external: true },
+    { key: "instagram", href: SITE.instagram, Icon: InstagramIcon, label: t.common.instagramLabel, external: true },
+    { key: "facebook", href: SITE.facebook, Icon: FacebookIcon, label: t.common.facebookLabel, external: true },
+    { key: "email", href: SITE.email && `mailto:${SITE.email}`, Icon: MailIcon, label: t.common.emailLabel },
+  ].filter((s) => s.href);
 
   return (
     <footer className="bg-surface-container grain">
       <div className={`${wrap} grid grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-8 pt-12 pb-10`}>
-        <div className="col-span-2 lg:col-span-5">
+        <div className="col-span-2 lg:col-span-4">
           <h2>
             <Logo lang={lang} large />
           </h2>
@@ -39,28 +46,33 @@ export default function Footer({ lang }) {
           </Link>
         </nav>
 
-        <div className="lg:col-span-2 flex flex-col">
+        {/* Ways to reach us — one row of round icons, then the email address
+            written out so it can be copied. Each icon shows only when its
+            link is set in lib/site.js. */}
+        <div className="col-span-2 lg:col-span-3 flex flex-col order-last lg:order-none">
           <span className={heading}>{t.footer.connect}</span>
-          <p className="footer-phone type-body text-on-surface-muted">{SITE.phoneDisplay}</p>
-          {SITE.instagram && (
-            <a
-              href={SITE.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={link}
-              aria-label={t.common.instagramLabel}
-            >
-              Instagram
-            </a>
-          )}
+          <div className="social-row">
+            {socials.map((s) => (
+              <a
+                key={s.key}
+                href={s.href}
+                aria-label={s.label}
+                title={s.label}
+                className="social-icon"
+                {...(s.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                <s.Icon className="w-5 h-5" />
+              </a>
+            ))}
+          </div>
           {SITE.email && (
-            <a href={`mailto:${SITE.email}`} className={`${link} break-all`}>
+            <a href={`mailto:${SITE.email}`} className={`${link} break-all mt-2`}>
               {SITE.email}
             </a>
           )}
         </div>
 
-        <div className="col-span-2 lg:col-span-3">
+        <div className="lg:col-span-3">
           <span className={heading}>{t.footer.office}</span>
           <p className="text-on-surface-muted text-base leading-relaxed whitespace-pre-line">{t.footer.address}</p>
           <a

@@ -12,6 +12,9 @@ const PHONE =
 const INSTAGRAM =
   "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z";
 
+const FACEBOOK =
+  "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z";
+
 const PIN =
   "M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z";
 
@@ -46,6 +49,7 @@ function Stroked({ d, className, width = 1.8 }) {
 export const WhatsAppIcon = ({ className = "w-5 h-5" }) => <Filled d={WHATSAPP} className={className} />;
 export const PhoneIcon = ({ className = "w-5 h-5" }) => <Filled d={PHONE} className={className} />;
 export const InstagramIcon = ({ className = "w-5 h-5" }) => <Filled d={INSTAGRAM} className={className} />;
+export const FacebookIcon = ({ className = "w-5 h-5" }) => <Filled d={FACEBOOK} className={className} />;
 export const PinIcon = ({ className = "w-5 h-5" }) => <Filled d={PIN} className={className} evenOdd />;
 export const MailIcon = ({ className = "w-5 h-5" }) => <Stroked d={MAIL} className={className} width={1.5} />;
 
@@ -69,6 +73,22 @@ export const Menu = ({ className = "w-6 h-6" }) => (
 );
 export const Chevron = ({ className = "w-4 h-4" }) => (
   <Stroked d="M9 5l7 7-7 7" className={className} width={2} />
+);
+// Language switch — a globe, understood without reading either language
+export const GlobeIcon = ({ className = "w-4 h-4" }) => (
+  <Stroked
+    d="M12 21a9 9 0 100-18 9 9 0 000 18zm0 0c2.5 0 4.5-4 4.5-9S14.5 3 12 3 7.5 7 7.5 12s2 9 4.5 9zM3.6 9h16.8M3.6 15h16.8"
+    className={className}
+    width={1.4}
+  />
+);
+// A plain message bubble — the SMS option on the enquiry form
+export const MessageIcon = ({ className = "w-5 h-5" }) => (
+  <Stroked
+    d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"
+    className={className}
+    width={1.5}
+  />
 );
 
 // Small brass tick for the service lists

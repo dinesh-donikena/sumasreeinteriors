@@ -1,7 +1,7 @@
 import ClosingCta from "@/components/ClosingCta";
 import EnquiryForm from "@/components/EnquiryForm";
 import PageHeader from "@/components/PageHeader";
-import { InstagramIcon, MailIcon, PinIcon } from "@/components/icons";
+import { FacebookIcon, InstagramIcon, MailIcon, PinIcon } from "@/components/icons";
 import { localePath } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 import { translations } from "@/lib/translations";
@@ -68,6 +68,16 @@ export default function ContactContent({ lang }) {
                     label={t.common.instagramLabel}
                   >
                     {c.instagram}
+                  </Channel>
+                )}
+                {SITE.facebook && (
+                  <Channel
+                    href={SITE.facebook}
+                    icon={<FacebookIcon />}
+                    external
+                    label={t.common.facebookLabel}
+                  >
+                    {c.facebook}
                   </Channel>
                 )}
               </div>

@@ -61,7 +61,7 @@ const PAGES = {
     },
     te: {
       description:
-        "తెలంగాణ, ఆంధ్రప్రదేశ్ అంతటా ఇంటీరియర్ డిజైన్ & కన్‌స్ట్రక్షన్. ప్లాన్ నుంచి ఇంటీరియర్స్ దాకా అన్నీ ఒకే దగ్గర.",
+        "తెలంగాణ, ఆంధ్రప్రదేశ్‌లో ఇంటి నిర్మాణం, రెనోవేషన్, ఇంటీరియర్స్ — ప్లాన్ నుంచి గృహప్రవేశం దాకా అన్నీ ఒకే టీమ్.",
     },
   },
   services: {
@@ -74,7 +74,7 @@ const PAGES = {
     te: {
       title: "సర్వీసులు",
       description:
-        "సుమ శ్రీ ఇంటీరియర్స్ & కన్‌స్ట్రక్షన్స్ సర్వీసులు — 2D, 3D ప్లాన్లు, సివిల్ వర్క్స్, మాడ్యులర్ కిచెన్, వార్డ్‌రోబ్స్, ఫాల్స్ సీలింగ్, ఇంకా మరెన్నో. తెలంగాణ, ఆంధ్రప్రదేశ్ అంతటా.",
+        "సుమ శ్రీ ఇంటీరియర్స్ & కన్‌స్ట్రక్షన్స్ సర్వీసులు — 2D, 3D ప్లాన్లు, సివిల్ వర్క్స్, మాడ్యులర్ కిచెన్, వార్డ్‌రోబ్స్, ఫాల్స్ సీలింగ్, ఇంకా ఎన్నో. తెలంగాణ, ఆంధ్రప్రదేశ్ అంతటా.",
     },
   },
   portfolio: {
@@ -87,7 +87,7 @@ const PAGES = {
     te: {
       title: "మా పనులు",
       description:
-        "మా సొంత పనుల ఫోటోలు — హాల్, కిచెన్, బెడ్‌రూమ్, పూజ గది. తెలంగాణ, ఆంధ్రప్రదేశ్ అంతటా ఇంటీరియర్స్ & కన్‌స్ట్రక్షన్.",
+        "హనుమకొండలో మేము చేసిన ఇంటి ఫోటోలు — హాల్, కిచెన్, బెడ్‌రూమ్, పూజ గది. అన్నీ మా చేతి పనులే.",
     },
   },
   testimonials: {
@@ -95,12 +95,12 @@ const PAGES = {
     en: {
       title: "Testimonials",
       description:
-        "What families say about building with Suma Sree Interiors and Constructions across Telangana and Andhra Pradesh, and how our simple 4-step process works.",
+        "What families say about building and renovating with Suma Sree Interiors and Constructions — in their own words.",
     },
     te: {
       title: "కస్టమర్ల మాటలు",
       description:
-        "తెలంగాణ, ఆంధ్రప్రదేశ్ అంతటా సుమ శ్రీతో పని చేయించుకున్న కుటుంబాలు ఏమంటున్నాయో, మా పని నాలుగు స్టెప్స్‌లో ఎలా జరుగుతుందో చూడండి.",
+        "సుమ శ్రీతో ఇల్లు కట్టించుకున్న, మార్చుకున్న కుటుంబాలు ఏమంటున్నారో — వారి మాటల్లోనే.",
     },
   },
   contact: {
@@ -108,12 +108,12 @@ const PAGES = {
     en: {
       title: "Contact",
       description:
-        "Contact Suma Sree Interiors and Constructions for interior design and construction across Telangana and Andhra Pradesh. Office in Hanamakonda, Warangal — call, WhatsApp or send a message.",
+        "Contact Suma Sree Interiors and Constructions for interior design and construction across Telangana and Andhra Pradesh. Office in Hanamakonda, Warangal — call, WhatsApp, email or SMS.",
     },
     te: {
       title: "కాంటాక్ట్",
       description:
-        "తెలంగాణ, ఆంధ్రప్రదేశ్ అంతటా ఇంటీరియర్స్ & కన్‌స్ట్రక్షన్ కోసం సుమ శ్రీని కాంటాక్ట్ చేయండి. ఆఫీస్ హనుమకొండ, వరంగల్ — కాల్, WhatsApp లేదా మెసేజ్.",
+        "తెలంగాణ, ఆంధ్రప్రదేశ్ అంతటా ఇంటీరియర్స్ & కన్‌స్ట్రక్షన్ కోసం సుమ శ్రీని కాంటాక్ట్ చేయండి. ఆఫీస్ హనుమకొండ, వరంగల్ — కాల్, WhatsApp, ఈమెయిల్ లేదా SMS.",
     },
   },
 };

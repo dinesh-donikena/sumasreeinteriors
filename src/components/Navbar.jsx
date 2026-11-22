@@ -4,8 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Logo from "@/components/Logo";
-import { Chevron, Close, Menu } from "@/components/icons";
+import { Chevron, Close, GlobeIcon, Menu } from "@/components/icons";
 import { localePath, stripLocale } from "@/lib/i18n";
+
+// The other language, named in its own script. One link, not a two-state
+// pill: a Telugu reader on an English page sees the word "తెలుగు" and taps
+// it. The Telugu label uses the phone's own font — it is the only Telugu on
+// an English page, and is not worth a 120 KB font download.
+const OTHER = {
+  en: { key: "te", label: "తెలుగు", systemFont: true },
+  te: { key: "en", label: "English", systemFont: false },
+};
 
 const PAGES = [
   ["/", "home"],
@@ -58,47 +67,22 @@ export default function Navbar({ lang, nav }) {
     };
   }, [menuOpen]);
 
-  // `w-fit` in the bar keeps the pill hugging its buttons; in the drawer both
-  // halves flex so the whole control is tappable — a stretched container with
-  // narrow buttons left a dead zone that looked clickable but wasn't.
+  // One quiet link to the same page in the other language.
+  const other = OTHER[lang];
   const langSwitch = (variant = "bar") => (
-    <div
-      className={`flex items-center border border-outline-light rounded-full overflow-hidden ${
-        variant === "drawer" ? "w-full" : "w-fit"
-      }`}
-      role="group"
-      aria-label={nav.language}
+    <a
+      href={localePath(other.key, page)}
+      hrefLang={other.key}
+      lang={other.key}
+      onClick={() => rememberLang(other.key)}
+      aria-label={`${nav.language}: ${other.label}`}
+      className={`lang-switch ${variant === "drawer" ? "lang-switch-drawer" : ""}`}
     >
-      {[
-        { key: "en", label: "English" },
-        { key: "te", label: "తెలుగు" },
-      ].map((opt) => (
-        <a
-          key={opt.key}
-          href={localePath(opt.key, page)}
-          hrefLang={opt.key}
-          lang={opt.key}
-          onClick={() => rememberLang(opt.key)}
-          aria-current={lang === opt.key ? "true" : undefined}
-          className={`${
-            variant === "drawer"
-              ? "flex-1 min-h-11 py-2.5 text-sm text-center"
-              : "inline-flex items-center min-h-11 px-2.5 max-[360px]:px-2 lg:px-3 text-[11px] lg:text-xs"
-          } font-semibold transition-colors duration-300 ${
-            lang === opt.key ? "bg-primary text-white" : "text-secondary hover:text-primary"
-          }`}
-        >
-          {opt.key === "en" ? (
-            variant === "drawer" ? opt.label : "EN"
-          ) : (
-            // The phone's own Telugu font, not the site's: this one word is
-            // the only Telugu on most English pages, and it should not cost
-            // them a 120 KB font download.
-            <span className="[font-family:sans-serif]">{opt.label}</span>
-          )}
-        </a>
-      ))}
-    </div>
+      <GlobeIcon className="w-4 h-4 text-accent shrink-0" />
+      <span className={other.systemFont ? "[font-family:sans-serif]" : undefined}>
+        {other.label}
+      </span>
+    </a>
   );
 
   return (
@@ -148,11 +132,12 @@ export default function Navbar({ lang, nav }) {
               {nav.talk}
             </Link>
 
-            {/* Drawer trigger — tablet and below */}
+            {/* Drawer trigger — tablet and below. .nav-menu does the hiding:
+                .btn sets display, and an unlayered rule beats lg:hidden. */}
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
-              className="lg:hidden btn btn-secondary btn-icon"
+              className="nav-menu btn btn-secondary btn-icon"
               aria-label={nav.openMenu}
               aria-expanded={menuOpen}
             >

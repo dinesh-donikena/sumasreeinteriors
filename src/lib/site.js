@@ -2,14 +2,19 @@
 export const SITE = {
   name: "Suma Sree Interiors and Constructions",
   whatsapp: "https://wa.me/919133509293",
-  // Instagram stays hidden until a handle exists. Set its URL here and it
-  // appears in the footer, Contact page and schema.
+  // The business's own Instagram page (footer, Contact page and schema).
   instagram: "https://www.instagram.com/sumasreeinteriorsconstructions/",
   phoneDisplay: "+91 91335 09293",
   phoneHref: "tel:+919133509293",
-  // No business inbox yet, so email is hidden everywhere. Set a real address
-  // (e.g. "hello@sumasreeinteriors.com") and it appears on Contact + footer.
-  email: null,
+  // Plain text message, for anyone who doesn't use WhatsApp.
+  smsHref: "sms:+919133509293",
+
+  // ⚠ PLACEHOLDERS — replace both before this goes live. example.com is
+  // reserved, so the placeholder can never deliver a customer's email to a
+  // stranger, and facebook.com/ is just Facebook's front page. Set either to
+  // null to hide it everywhere (footer, Contact, the form's email option).
+  email: "hello@example.com",
+  facebook: "https://www.facebook.com/",
 
   // Swap for the Google Business Profile link / exact street address once
   // the owner shares it — the map pin then lands on the office itself.

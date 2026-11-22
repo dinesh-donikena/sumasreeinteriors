@@ -1,9 +1,11 @@
 // All site text in English and Telugu.
 //
 // English: warm, plain, local — a family business talking, not an agency.
-// Telugu: written FRESH as natural spoken Telugu (Telangana style), not
-// translated sentence-by-sentence from English. Short sentences, everyday
-// loanwords (ప్లానింగ్, బడ్జెట్, కిచెన్) and a friendly, direct tone.
+// Telugu: written FRESH as natural spoken Telugu (Telangana style), never
+// translated word-by-word from English. Trade words stay the words people
+// actually say on site (సైట్ విజిట్, ఎస్టిమేట్, హ్యాండోవర్, కిచెన్), because
+// the "pure" Telugu equivalents — సందర్శన, అప్పగింత — read like a government
+// notice, not like a builder talking to a family.
 // The two languages carry the same meaning but each reads like it was
 // written in that language first.
 //
@@ -33,18 +35,16 @@ export const translations = {
       heroTitle1: "Your Dream House,",
       heroTitle2: "Our Responsibility.",
       heroCta: "See Our Work",
-      heroCue: "Step inside",
-      heroCaption: "TV unit & wall panelling · Hanamakonda",
+      heroTalk: "Talk to Us",
       heroPhotoAlt: "Backlit TV unit with fluted panelling in a Hanamakonda home",
-      promise: ["Quality materials", "Stunning designs", "Experienced workmanship"],
       introHeading: "Construction, renovation, interiors — we do it all.",
       introP1:
-        "Suma Sree Interiors and Constructions is a house construction and interior design company. Whether you're building a new house or renovating the one you live in, we take care of everything — planning, construction, renovation and interiors — under one roof.",
+        "Whether you're building a new house or making the one you live in feel new again, everything stays with one team — planning, construction, renovation and interiors. One number to call, one team answerable for the work.",
       introP2: "Interior design and construction across Telangana and Andhra Pradesh.",
       servicesLabel: "Our Services",
       servicesHeading: "What We Do",
       servicesMore: "See all services",
-      servicesAndMore: "and more",
+      serviceLink: "See the full list",
       portfolioLabel: "Our Work",
       portfolioHeading: "A Hanamakonda home, room by room",
       portfolioLink: "See All",
@@ -56,15 +56,31 @@ export const translations = {
         { title: "Bedroom Wardrobe", location: "Hanamakonda" },
         { title: "Wash Counter", location: "Hanamakonda" },
       ],
+      promiseLabel: "Why families choose us",
+      promiseHeading: "Three things we don't compromise on.",
+      promise: [
+        {
+          title: "Quality materials",
+          text: "Brand-name steel, cement, ply and fittings. We put the options and their prices in front of you, and you pick what goes into your house.",
+        },
+        {
+          title: "Stunning designs",
+          text: "2D and 3D drawings before a single brick is laid — so you walk through the room on a screen long before you walk through the door.",
+        },
+        {
+          title: "Experienced workmanship",
+          text: "One team takes the work from the first wall to the last handle — and you have one person to call about every part of it.",
+        },
+      ],
       ctaHeading: "Planning to build or renovate?",
-      faqLabel: "FAQs",
-      faqHeading: "FAQs",
+      faqLabel: "Questions",
+      faqHeading: "Commonly asked",
       faqNote: "Anything else on your mind?",
       faqCall: "Just give us a call.",
       faq: [
         {
-          q: "Do you take up only interiors, or construction as well?",
-          a: "Both. Some customers ask us only to build, some only for interiors, and some for everything from start to finish. You choose what you need.",
+          q: "I'm not in town while the work goes on. How will I know what's happening?",
+          a: "We keep you updated at every stage with photos and short videos on WhatsApp, and you can call us whenever you want to check on the work.",
         },
         {
           q: "How do we start?",
@@ -92,7 +108,7 @@ export const translations = {
         {
           key: "construction",
           title: "Construction",
-          tagline: "End-to-end construction — beginning to end.",
+          tagline: "From an empty plot to the day you move in.",
           items: [
             "New construction",
             "2D & 3D home plans",
@@ -113,7 +129,7 @@ export const translations = {
         {
           key: "renovation",
           title: "Renovation",
-          tagline: "Before → after. Budget-friendly, modern designs.",
+          tagline: "Your old house made new again — on your budget.",
           items: [
             "Demolition of walls, slabs and more",
             "Restructured walls",
@@ -134,7 +150,7 @@ export const translations = {
         {
           key: "interiors",
           title: "Interiors",
-          tagline: "A luxury touch for your home — in our style.",
+          tagline: "The finish that makes a house feel like yours.",
           items: [
             "Cupboards",
             "Wardrobes",
@@ -151,6 +167,8 @@ export const translations = {
           ],
         },
       ],
+      // "+{n} more" under each service card on Home
+      moreCount: "+{n} more",
       buildHeading: "What we build",
       buildTypes: [
         "Independent homes",
@@ -166,8 +184,7 @@ export const translations = {
         "Schools",
       ],
       areasHeading: "Where we work",
-      areasText:
-        "Interior design and construction across Telangana and Andhra Pradesh, including",
+      areasText: "Anywhere in Telangana and Andhra Pradesh, including:",
       areas: [
         "Hyderabad",
         "Warangal",
@@ -198,7 +215,7 @@ export const translations = {
       ctaHeading: "Tell us what you're planning.",
       ctaButton: "Talk to Us",
       processLabel: "How the work goes",
-      process: ["Visit", "Design", "Build", "Handover"],
+      process: ["Site visit", "Design", "Build", "Handover"],
     },
     portfolio: {
       title: "Our Work",
@@ -282,7 +299,7 @@ export const translations = {
     contact: {
       title: "Let's Talk About Your House.",
       intro:
-        "Fill the form or message us on WhatsApp — we'll reply within a day.",
+        "Write it once, then send it the way you like — WhatsApp, email or SMS. We reply within a day.",
       form: {
         name: "Name",
         namePlaceholder: "Your name",
@@ -291,39 +308,48 @@ export const translations = {
         need: "What do you need?",
         message: "Message",
         messagePlaceholder: "Tell us about your house or plot...",
-        send: "Send on WhatsApp",
-        sendNote: "Opens WhatsApp with your message ready — just tap send.",
+        sendWhatsApp: "Send on WhatsApp",
+        sendEmail: "Send by email",
+        sendSms: "Send as SMS",
+        altHeading: "No WhatsApp? Send it another way:",
+        sendNote: "Your message opens ready to send — nothing is stored on this website.",
         required: "Please fill this in.",
-        // Pieces of the pre-filled WhatsApp message
+        // Pieces of the pre-filled message, in every channel
         waHello: "Hello, I'm",
         waNeed: "Need",
         waSite: "Site",
+        emailSubject: "Enquiry from the website",
       },
       infoHeading: "Contact Details",
       hours: "Mon – Sat, 9 am – 7 pm",
       responseTime: "Reply within 24 hours",
+      callUs: "Call us",
       officeHeading: "Our Office",
       address: "Hanamakonda,\nWarangal, Telangana - 506001",
       openMap: "Open in Google Maps",
       mapTitle: "Map of Hanamakonda, Warangal",
       instagram: "See more on Instagram",
+      facebook: "Find us on Facebook",
     },
     footer: {
       tagline:
         "Interior design and construction across Telangana and Andhra Pradesh.",
       pages: "Pages",
       connect: "Connect",
+      emailUs: "Email us",
       office: "Office",
       contactUs: "Contact Us",
       address: "Hanamakonda,\nWarangal, Telangana - 506001",
       city: "Warangal",
       rights: "All rights reserved.",
     },
-    // Labels read out by screen readers for the floating buttons
+    // Labels read out by screen readers for icon-only links and buttons
     common: {
       whatsappLabel: "Message us on WhatsApp",
       callLabel: "Call us",
+      emailLabel: "Email us",
       instagramLabel: "Suma Sree on Instagram",
+      facebookLabel: "Suma Sree on Facebook",
     },
     notFound: {
       label: "Page not found",
@@ -346,30 +372,28 @@ export const translations = {
       portfolio: "మా పనులు",
       testimonials: "కస్టమర్ల మాటలు",
       contact: "కాంటాక్ట్",
-      talk: "కాంటాక్ట్ చేయండి",
+      talk: "మాట్లాడదాం",
       language: "భాష",
       openMenu: "మెనూ తెరవండి",
-      closeMenu: "మెనూ మూసివేయండి",
+      closeMenu: "మెనూ మూసేయండి",
     },
     home: {
       heroEyebrow: "ఇంటి నిర్మాణం & ఇంటీరియర్స్",
       heroTitle1: "మీ ఇంటి కల,",
       heroTitle2: "మా బాధ్యత.",
       heroCta: "మా పనులు చూడండి",
-      heroCue: "లోపలికి రండి",
-      heroCaption: "టీవీ యూనిట్ & వాల్ ప్యానెలింగ్ · హనుమకొండ",
+      heroTalk: "మాట్లాడదాం",
       heroPhotoAlt: "హనుమకొండ ఇంట్లో లైటింగ్‌తో టీవీ యూనిట్, ఫ్లూటెడ్ ప్యానెలింగ్",
-      promise: ["నాణ్యమైన మెటీరియల్స్", "అద్భుతమైన డిజైన్లు", "అనుభవజ్ఞులైన వర్క్"],
       introHeading: "కన్‌స్ట్రక్షన్, రెనోవేషన్, ఇంటీరియర్స్ — అన్నీ మేమే చూసుకుంటాం.",
       introP1:
-        "సుమ శ్రీ ఇంటీరియర్స్ & కన్‌స్ట్రక్షన్స్ — హౌస్ కన్‌స్ట్రక్షన్ & ఇంటీరియర్ డిజైన్ కంపెనీ. కొత్త ఇల్లు కట్టడమైనా, ఉన్న ఇంటిని రెనోవేట్ చేయడమైనా — ప్లానింగ్, కన్‌స్ట్రక్షన్, రెనోవేషన్, ఇంటీరియర్స్ అన్నీ ఒకే దగ్గర.",
-      introP2: "తెలంగాణ, ఆంధ్రప్రదేశ్ అంతటా ఇంటీరియర్ డిజైన్ & కన్‌స్ట్రక్షన్.",
+        "కొత్త ఇల్లు కట్టాలన్నా, ఉన్న ఇంటిని కొత్తగా మార్చాలన్నా — ప్లానింగ్, కన్‌స్ట్రక్షన్, రెనోవేషన్, ఇంటీరియర్స్ అన్నీ ఒకే టీమ్ చూసుకుంటుంది. మీరు చేయాల్సిందల్లా ఒక్క ఫోన్ కాల్. పని బాధ్యత మాది.",
+      introP2: "తెలంగాణ, ఆంధ్రప్రదేశ్‌లో ఎక్కడైనా పని చేస్తాం.",
       servicesLabel: "మా సర్వీసులు",
       servicesHeading: "మేము చేసే పనులు",
       servicesMore: "అన్ని సర్వీసులు చూడండి",
-      servicesAndMore: "ఇంకా మరెన్నో",
+      serviceLink: "పూర్తి లిస్ట్ చూడండి",
       portfolioLabel: "మా పనులు",
-      portfolioHeading: "హనుమకొండ ఇల్లు, గది గదిగా",
+      portfolioHeading: "హనుమకొండలో మేము చేసిన ఒక ఇల్లు",
       portfolioLink: "అన్నీ చూడండి",
       projects: [
         { title: "చెక్క పనితో హాల్ ఆర్చ్", location: "హనుమకొండ" },
@@ -379,43 +403,59 @@ export const translations = {
         { title: "బెడ్‌రూమ్ వార్డ్‌రోబ్", location: "హనుమకొండ" },
         { title: "వాష్ కౌంటర్", location: "హనుమకొండ" },
       ],
-      ctaHeading: "ఇల్లు కట్టాలని ఆలోచిస్తున్నారా?",
-      faqLabel: "తరచుగా అడిగే ప్రశ్నలు",
-      faqHeading: "తరచుగా అడిగే ప్రశ్నలు",
-      faqNote: "ఇంకా ఏమైనా సందేహాలున్నాయా?",
-      faqCall: "కాల్ చేయండి.",
-      faq: [
+      promiseLabel: "మమ్మల్ని ఎందుకు ఎంచుకుంటారంటే",
+      promiseHeading: "ఈ మూడింటిలో మేము రాజీ పడం.",
+      promise: [
         {
-          q: "మీరు ఇంటీరియర్స్ మాత్రమే చేస్తారా, కన్‌స్ట్రక్షన్ కూడా చేస్తారా?",
-          a: "రెండూ చేస్తాం. కొందరు ఇల్లు కట్టడానికి మాత్రమే అడుగుతారు, కొందరు ఇంటీరియర్స్ మాత్రమే, కొందరు మొదటి నుంచి చివరి వరకు అన్నీ. మీకు ఏది కావాలో అదే చేస్తాం.",
+          title: "నాణ్యమైన మెటీరియల్",
+          text: "స్టీల్, సిమెంట్, ప్లై, ఫిట్టింగ్స్ — అన్నీ పేరున్న బ్రాండ్లవే. ఏ బ్రాండ్‌కి ఎంత ధరో మీ ముందే పెడతాం, మీ ఇంట్లోకి ఏది రావాలో మీరే నిర్ణయించుకుంటారు.",
         },
         {
-          q: "ఎలా మొదలుపెడదాం?",
-          a: "కాల్ చేయండి లేదా WhatsApp లో మెసేజ్ చేయండి. సైట్‌కి వచ్చి, మీకేం కావాలో మాట్లాడుకుని, ప్లాన్‌తో పాటు ఖర్చు అంచనా ఇస్తాం.",
+          title: "కంటికి నచ్చే డిజైన్",
+          text: "ఒక్క ఇటుక పెట్టక ముందే 2D, 3D డిజైన్లు. గది ఎలా వస్తుందో స్క్రీన్ మీదే చూసి, నచ్చాక పని మొదలుపెడతాం.",
+        },
+        {
+          title: "అనుభవమున్న పనివాళ్లు",
+          text: "మొదటి గోడ నుంచి చివరి హ్యాండిల్ దాకా పనంతా ఒకే టీమ్ చూసుకుంటుంది. ఏ విషయం అడగాలన్నా మీకు ఒకే మనిషి.",
+        },
+      ],
+      ctaHeading: "ఇల్లు కట్టాలనో, మార్చాలనో ఆలోచనలో ఉన్నారా?",
+      faqLabel: "సందేహాలు",
+      faqHeading: "తరచుగా అడిగే ప్రశ్నలు",
+      faqNote: "ఇంకేమైనా సందేహమా?",
+      faqCall: "ఒక్క కాల్ చేయండి.",
+      faq: [
+        {
+          q: "పని జరిగేటప్పుడు నేను ఊరిలో ఉండను. ఏం జరుగుతుందో ఎలా తెలుస్తుంది?",
+          a: "ప్రతి దశలో ఫోటోలు, చిన్న వీడియోలు WhatsApp లో పంపిస్తాం. పని ఎలా జరుగుతుందో తెలుసుకోవాలనిపించినప్పుడల్లా మాకు కాల్ చేయొచ్చు.",
+        },
+        {
+          q: "మొదలుపెట్టడం ఎలా?",
+          a: "కాల్ చేయండి, లేదా WhatsApp లో మెసేజ్ పెట్టండి. మేము సైట్‌కి వస్తాం, మీకేం కావాలో మాట్లాడుకుంటాం, తర్వాత ప్లాన్‌తో పాటు ఖర్చు అంచనా ఇస్తాం.",
         },
         {
           q: "ఖర్చు ఎలా నిర్ణయిస్తారు?",
-          a: "పని ఎంత ఉంది, ఏ మెటీరియల్ ఎంచుకున్నారు, సైట్ పరిస్థితి ఎలా ఉంది — వీటిని బట్టి ఉంటుంది. పని మొదలవ్వక ముందే ఎస్టిమేట్ రాతపూర్వకంగా ఇస్తాం.",
+          a: "పని ఎంత ఉంది, ఏ మెటీరియల్ ఎంచుకున్నారు, సైట్ పరిస్థితి ఎలా ఉంది — వీటిని బట్టి. పని మొదలయ్యే ముందే ఎస్టిమేట్ రాతపూర్వకంగా చేతికిస్తాం.",
         },
         {
           q: "మెటీరియల్ మేమే ఎంచుకోవచ్చా?",
-          a: "తప్పకుండా. ఏ మెటీరియల్‌కి ఎంత ధర ఉందో చూపిస్తాం, మీరు నిర్ణయించుకోండి. మీ దగ్గర ఇప్పటికే ఏదైనా ఆలోచన ఉంటే దాని ప్రకారమే చేస్తాం.",
+          a: "తప్పకుండా. ఏ మెటీరియల్‌కి ఎంత ధరో చూపిస్తాం, మీరు ఎంచుకోండి. మీ దగ్గర ముందే ఏదైనా ఆలోచన ఉంటే దాని ప్రకారమే చేస్తాం.",
         },
       ],
       ctaText:
-        "ఒక్క కాల్ చాలు. మీ దగ్గరికి మేమే వస్తాం — స్థలం చూసి, మీ ఆలోచనలు విని, ఖర్చు అంచనా స్పష్టంగా చెప్తాం.",
-      ctaButton: "కాంటాక్ట్ చేయండి",
-      ctaWhatsApp: "WhatsApp చేయండి",
+        "ఒక్క కాల్ చాలు. మేమే మీ దగ్గరికి వస్తాం — స్థలం చూసి, మీ ఆలోచన విని, ఖర్చు ఎంతవుతుందో స్పష్టంగా చెప్తాం.",
+      ctaButton: "మాట్లాడదాం",
+      ctaWhatsApp: "WhatsApp లో మెసేజ్ చేయండి",
     },
     services: {
       title: "మా సర్వీసులు",
       intro:
-        "కన్‌స్ట్రక్షన్, రెనోవేషన్, ఇంటీరియర్స్ — మొదటి డ్రాయింగ్ నుంచి మీరు ఇంట్లోకి అడుగుపెట్టే రోజు దాకా, అన్నీ ఒకే టీమ్.",
+        "కన్‌స్ట్రక్షన్, రెనోవేషన్, ఇంటీరియర్స్ — మొదటి డ్రాయింగ్ నుంచి మీరు ఇంట్లోకి అడుగుపెట్టే రోజు దాకా, అంతా ఒకే టీమ్.",
       categories: [
         {
           key: "construction",
           title: "కన్‌స్ట్రక్షన్",
-          tagline: "మొదలు నుంచి చివరి వరకు — ఎండ్ టు ఎండ్ నిర్మాణం.",
+          tagline: "ఖాళీ స్థలం నుంచి గృహప్రవేశం దాకా.",
           items: [
             "కొత్త ఇంటి నిర్మాణం",
             "2D, 3D ఇంటి ప్లాన్లు",
@@ -436,7 +476,7 @@ export const translations = {
         {
           key: "renovation",
           title: "రెనోవేషన్",
-          tagline: "ముందు → తర్వాత. బడ్జెట్‌లో, మోడర్న్ డిజైన్లతో.",
+          tagline: "పాత ఇంటికి కొత్త కళ — మీ బడ్జెట్‌లోనే.",
           items: [
             "గోడలు, స్లాబులు కూల్చడం",
             "గోడల రీస్ట్రక్చరింగ్",
@@ -457,7 +497,7 @@ export const translations = {
         {
           key: "interiors",
           title: "ఇంటీరియర్స్",
-          tagline: "మీ ఇంటికి లగ్జరీ టచ్ – మా స్టైల్!",
+          tagline: "ఇల్లు ‘మనది’ అనిపించేది ఈ పనే.",
           items: [
             "కప్‌బోర్డ్స్",
             "వార్డ్‌రోబ్స్",
@@ -474,7 +514,8 @@ export const translations = {
           ],
         },
       ],
-      buildHeading: "మేము చేసే నిర్మాణాలు",
+      moreCount: "ఇంకా {n} పనులు",
+      buildHeading: "మేము కట్టేవి",
       buildTypes: [
         "ఇండిపెండెంట్ ఇళ్లు",
         "విల్లాలు",
@@ -489,8 +530,7 @@ export const translations = {
         "స్కూళ్లు",
       ],
       areasHeading: "మేము పని చేసే ప్రాంతాలు",
-      areasText:
-        "తెలంగాణ, ఆంధ్రప్రదేశ్ అంతటా ఇంటీరియర్స్ & కన్‌స్ట్రక్షన్ — ముఖ్యంగా",
+      areasText: "తెలంగాణ, ఆంధ్రప్రదేశ్‌లో ఎక్కడైనా — ఉదాహరణకు:",
       areas: [
         "హైదరాబాద్",
         "వరంగల్",
@@ -503,9 +543,9 @@ export const translations = {
         "గుంటూరు",
         "ఒంగోలు",
       ],
-      materialsHeading: "మేము వాడే మెటీరియల్స్ & బ్రాండ్లు",
+      materialsHeading: "మేము వాడే మెటీరియల్, బ్రాండ్లు",
       materialsNote:
-        "నమ్మకమైన బ్రాండ్లు — ఆప్షన్లు, ధరలు చూపిస్తాం, మీరే నిర్ణయించుకోండి.",
+        "పేరున్న బ్రాండ్లే — ఆప్షన్లు, ధరలు చూపిస్తాం, ఎంచుకునేది మీరే.",
       materials: [
         { name: "స్టీల్", brands: "TATA, Vizag Steel, JSW, Jindal, Tirupati" },
         { name: "సిమెంట్", brands: "UltraTech, Ambuja, Maha, Bharathi" },
@@ -518,15 +558,15 @@ export const translations = {
         { name: "టైల్స్", brands: "Kajaria, Johnson, GVT" },
         { name: "వుడ్ వర్క్", brands: "Centuryply, Greenply, Misakaply, Vanamply — గ్లాసీ, అక్రిలిక్, మాడ్యులర్" },
       ],
-      ctaHeading: "మీ ప్లాన్ ఏంటో చెప్పండి.",
-      ctaButton: "కాంటాక్ట్ చేయండి",
-      processLabel: "పని ఎలా సాగుతుంది",
-      process: ["సందర్శన", "డిజైన్", "నిర్మాణం", "అప్పగింత"],
+      ctaHeading: "మీ ఆలోచన ఏంటో చెప్పండి.",
+      ctaButton: "మాట్లాడదాం",
+      processLabel: "పని ఇలా సాగుతుంది",
+      process: ["సైట్ విజిట్", "డిజైన్", "పని", "ఇల్లు మీ చేతికి"],
     },
     portfolio: {
       title: "మా పనులు",
       intro:
-        "హనుమకొండలో ఇటీవల చేసిన ఇంటి రెనోవేషన్ ఫోటోలు — అన్నీ మా పనులే.",
+        "హనుమకొండలో ఇటీవల చేసిన ఇంటి రెనోవేషన్ ఫోటోలు — అన్నీ మా చేతి పనులే.",
       filters: {
         all: "అన్నీ",
         hall: "హాల్",
@@ -545,95 +585,101 @@ export const translations = {
       ],
       viewer: {
         view: "పెద్దగా చూడండి",
-        close: "మూసివేయండి",
+        close: "మూసేయండి",
         prev: "మునుపటి ఫోటో",
         next: "తర్వాతి ఫోటో",
       },
-      ctaHeading: "తర్వాత మీ ఇల్లే.",
-      ctaButton: "ఇప్పుడే మొదలుపెట్టండి",
+      ctaHeading: "తర్వాతి ఇల్లు మీదే కావచ్చు.",
+      ctaButton: "ఇప్పుడే మొదలుపెడదాం",
     },
     testimonials: {
       label: "కస్టమర్ల మాటలు",
       title: "మా కస్టమర్లు ఏమంటున్నారంటే…",
-      intro: "మేము ఇళ్లు కట్టిన కుటుంబాలు చెప్పిన మాటలు.",
+      intro: "మేము ఇళ్లు కట్టిచ్చిన కుటుంబాల మాటల్లోనే.",
       items: [
         {
           quote:
-            "ఇంటి పని జరుగుతున్నప్పుడు మేము హైదరాబాద్‌లో ఉన్నాం. ప్రతి స్టేజ్ ఫోటోలు పంపించారు, చెప్పిన టైమ్‌కి పూర్తి చేశారు. నమ్మకంగా పని చేసే మనుషులు.",
+            "ఇంటి పని జరుగుతున్నప్పుడు మేము హైదరాబాద్‌లో ఉన్నాం. ప్రతి దశ ఫోటోలు పంపించారు, చెప్పిన టైమ్‌కే పూర్తి చేశారు. నమ్మకంగా పని చేసే మనుషులు.",
           name: "రమేష్",
           project: "ఇంటి నిర్మాణం, హనుమకొండ",
         },
         {
           quote:
-            "మా కిచెన్, హాల్ చాలా బాగా వచ్చాయి. మా బడ్జెట్‌లోనే మంచి ఐడియాలు చెప్పారు — ఎక్కువ ఖర్చు పెట్టించే ప్రయత్నం అస్సలు చేయలేదు.",
+            "మా కిచెన్, హాల్ చాలా బాగా వచ్చాయి. మా బడ్జెట్‌లోనే మంచి ఐడియాలు చెప్పారు — ఎక్కువ ఖర్చు పెట్టించాలని ఒక్కసారి కూడా చూడలేదు.",
           name: "స్వప్న & రవి",
           project: "హోమ్ ఇంటీరియర్స్, వరంగల్",
         },
         {
           quote:
-            "పని శుభ్రంగా చేశారు. ఫోన్ చేస్తే ఎప్పుడూ అందుబాటులో ఉన్నారు. అక్కడక్కడ కాస్త ఆలస్యమైనా, ఫైనల్ రిజల్ట్ చూశాక సంతోషమే.",
+            "పని శుభ్రంగా చేశారు. ఫోన్ చేస్తే ఎప్పుడూ అందుబాటులో ఉన్నారు. అక్కడక్కడ కొంచెం ఆలస్యమైనా, చివరికి వచ్చిన రిజల్ట్ చూశాక ఆ మాట మర్చిపోయాం.",
           name: "వెంకటేష్",
           project: "ఇంటి రెనోవేషన్, కాజీపేట",
         },
       ],
       processLabel: "మా పద్ధతి",
-      processHeading: "పని ఎలా జరుగుతుందంటే…",
+      processHeading: "పని ఇలా జరుగుతుంది",
       processText: "మొదలు నుంచి చివరి దాకా — నాలుగే స్టెప్స్.",
       steps: [
         {
           title: "మొదటి మీటింగ్",
-          desc: "ఫోన్‌లో అయినా, నేరుగా అయినా — మీ అవసరాలు, స్థలం, బడ్జెట్ గురించి మాట్లాడుకుంటాం.",
+          desc: "ఫోన్‌లో అయినా, నేరుగా అయినా — మీ అవసరం, స్థలం, బడ్జెట్ గురించి మాట్లాడుకుంటాం.",
         },
         {
           title: "ప్లాన్ & ఎస్టిమేట్",
-          desc: "పని మొదలవ్వక ముందే ప్లాన్, ఖర్చు అంచనా మీకు ఇస్తాం.",
+          desc: "పని మొదలయ్యే ముందే ప్లాన్, ఖర్చు అంచనా మీ చేతికిస్తాం. దాచేదేమీ ఉండదు.",
         },
         {
           title: "పని మొదలు",
-          desc: "మెటీరియల్, పనివాళ్లు, క్వాలిటీ — అన్నీ మేమే చూసుకుంటాం. మీకు ఎప్పటికప్పుడు అప్‌డేట్ ఇస్తాం.",
+          desc: "మెటీరియల్, పనివాళ్లు, క్వాలిటీ — అన్నీ మేమే చూసుకుంటాం. మీకు ఎప్పటికప్పుడు అప్‌డేట్ ఇస్తుంటాం.",
         },
         {
           title: "పని పూర్తి",
-          desc: "పని పూర్తి చేసి, మీతో కలిసి ఒకసారి చూస్తాం.",
+          desc: "పని పూర్తయ్యాక మీతో కలిసి ఒకసారి అంతా చూసుకుంటాం.",
         },
       ],
       ctaHeading: "రండి, మీ ఇంటి గురించి మాట్లాడుకుందాం.",
       ctaButton: "కాంటాక్ట్ చేయండి",
-      photoAlt: "పూజ గది, కిచెన్ తెరిచే చెక్క పనితో కూడిన హాల్ ఆర్చ్",
+      photoAlt: "పూజ గది, కిచెన్ వైపు తెరుచుకునే చెక్క పనితో కూడిన హాల్ ఆర్చ్",
     },
     contact: {
       title: "మీ ఇంటి గురించి మాట్లాడుకుందాం.",
       intro:
-        "ఫారం నింపండి, లేదా డైరెక్ట్‌గా WhatsApp చేయండి — ఒక్క రోజులోనే రిప్లై ఇస్తాం.",
+        "ఒకసారి రాయండి, మీకు ఏది వీలైతే దాంట్లో పంపండి — WhatsApp, ఈమెయిల్ లేదా SMS. ఒక్క రోజులోనే రిప్లై ఇస్తాం.",
       form: {
         name: "పేరు",
         namePlaceholder: "మీ పేరు",
         location: "సైట్ ఎక్కడ?",
         locationPlaceholder: "ఉదా: హనుమకొండ",
-        need: "మీకు ఏం కావాలి?",
+        need: "మీకేం కావాలి?",
         message: "మెసేజ్",
         messagePlaceholder: "మీ ఇల్లు లేదా స్థలం గురించి రెండు మాటలు రాయండి...",
-        send: "WhatsApp లో పంపండి",
-        sendNote: "మీ మెసేజ్ WhatsApp లో రెడీగా ఓపెన్ అవుతుంది — సెండ్ నొక్కితే చాలు.",
+        sendWhatsApp: "WhatsApp లో పంపండి",
+        sendEmail: "ఈమెయిల్ పంపండి",
+        sendSms: "SMS పంపండి",
+        altHeading: "WhatsApp లేదా? ఇలా కూడా పంపొచ్చు:",
+        sendNote: "మీ మెసేజ్ పంపడానికి రెడీగా ఓపెన్ అవుతుంది — ఈ వెబ్‌సైట్‌లో ఏదీ సేవ్ కాదు.",
         required: "దయచేసి ఇది నింపండి.",
         waHello: "నమస్తే, నా పేరు",
         waNeed: "కావాల్సింది",
         waSite: "సైట్",
+        emailSubject: "వెబ్‌సైట్ నుంచి ఎంక్వయిరీ",
       },
       infoHeading: "కాంటాక్ట్ వివరాలు",
       hours: "సోమ – శని, ఉదయం 9 – సాయంత్రం 7",
       responseTime: "24 గంటల్లో రిప్లై",
+      callUs: "కాల్ చేయండి",
       officeHeading: "మా ఆఫీస్",
       address: "హనుమకొండ,\nవరంగల్, తెలంగాణ - 506001",
       openMap: "Google Maps లో చూడండి",
       mapTitle: "హనుమకొండ, వరంగల్ మ్యాప్",
       instagram: "మరిన్ని పనులు Instagram లో",
+      facebook: "Facebook లో మమ్మల్ని కలవండి",
     },
     footer: {
-      tagline:
-        "తెలంగాణ, ఆంధ్రప్రదేశ్ అంతటా ఇంటీరియర్ డిజైన్ & కన్‌స్ట్రక్షన్.",
+      tagline: "ఇంటి నిర్మాణం, రెనోవేషన్, ఇంటీరియర్స్ — తెలంగాణ, ఆంధ్రప్రదేశ్ అంతటా.",
       pages: "పేజీలు",
-      connect: "కనెక్ట్",
+      connect: "మాతో టచ్‌లో ఉండండి",
+      emailUs: "ఈమెయిల్ చేయండి",
       office: "ఆఫీస్",
       contactUs: "కాంటాక్ట్ చేయండి",
       address: "హనుమకొండ,\nవరంగల్, తెలంగాణ - 506001",
@@ -643,12 +689,14 @@ export const translations = {
     common: {
       whatsappLabel: "WhatsApp లో మెసేజ్ చేయండి",
       callLabel: "కాల్ చేయండి",
-      instagramLabel: "సుమ శ్రీ Instagram",
+      emailLabel: "ఈమెయిల్ పంపండి",
+      instagramLabel: "సుమ శ్రీ ఇన్‌స్టాగ్రామ్ పేజీ",
+      facebookLabel: "సుమ శ్రీ ఫేస్‌బుక్ పేజీ",
     },
     notFound: {
       label: "పేజీ దొరకలేదు",
-      title: "ఈ తలుపు తెరుచుకోవడం లేదు.",
-      text: "లింక్ పాతదై ఉండొచ్చు, లేదా అడ్రస్ తప్పుగా టైప్ అయి ఉండొచ్చు. మిగతావన్నీ ఇక్కడే ఉన్నాయి.",
+      title: "ఈ తలుపు తెరుచుకోవట్లేదు.",
+      text: "లింక్ పాతదై ఉండొచ్చు, లేదా అడ్రస్ తప్పుగా పడి ఉండొచ్చు. మిగతావన్నీ ఇక్కడే ఉన్నాయి.",
       home: "హోమ్‌కి వెళ్లండి",
       work: "మా పనులు చూడండి",
     },

@@ -7,16 +7,14 @@ import { useEffect, useRef } from "react";
 // iPhone browsers — which all use Safari's engine — and a quick swipe could
 // skip the effect entirely.) As you scroll:
 //   0–45svh   the doorway grows until it becomes a full rectangle
-//   0–22svh   the headline fades up and away
-//   35–55svh  the caption and its shade appear
-//   to 80svh  the full image holds, then the page moves on
+//   0–20svh   the headline and buttons fade up and away, so nothing sits on
+//             the photo while it opens
+//   to 60svh  the full photo holds a moment, then the page moves on
 // Sizes are measured from what is actually on screen, not read back from
 // CSS variables, so every engine gets the same numbers. Visitors who ask
 // for reduced motion keep the still doorway.
 const GROW = 45;
-const COPY_OUT = 22;
-const CAPTION_FROM = 35;
-const CAPTION_TO = 55;
+const COPY_OUT = 20;
 
 const clamp = (v) => Math.min(1, Math.max(0, v));
 const easeInOut = (p) => (p < 0.5 ? 2 * p * p : 1 - (-2 * p + 2) ** 2 / 2);
@@ -25,16 +23,13 @@ export default function HeroScroll() {
   const ref = useRef(null);
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reducedMotion) return;
 
     const stage = ref.current.closest(".hero-stage");
     const frame = stage.querySelector(".hero-frame");
     const door = stage.querySelector(".hero-door");
     const copy = stage.querySelector(".hero-copy");
-    const fades = stage.querySelectorAll(".hero-scrim, .hero-caption");
 
     // 1svh as the browser sees it (steady even as phone toolbars slide)
     const probe = document.createElement("div");
@@ -55,13 +50,16 @@ export default function HeroScroll() {
     };
 
     let raf = 0;
-    let w = 0;
     const update = () => {
       raf = 0;
       const y = window.scrollY;
       const grow = easeInOut(clamp(y / (GROW * svh)));
-      w = w0 + (wEnd - w0) * grow;
-      frame.style.setProperty("--arch-w", `${w}px`);
+      frame.style.setProperty("--arch-w", `${w0 + (wEnd - w0) * grow}px`);
+      const out = clamp(y / (COPY_OUT * svh));
+      copy.style.opacity = String(1 - out);
+      copy.style.transform = `translateY(${-28 * out}px)`;
+      // Fully faded: out of the way of taps and screen readers' focus
+      copy.style.visibility = out >= 1 ? "hidden" : "";
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -88,6 +86,7 @@ export default function HeroScroll() {
       probe.remove();
       stage.classList.remove("hero-js");
       frame.style.removeProperty("--arch-w");
+      copy.removeAttribute("style");
     };
   }, []);
 

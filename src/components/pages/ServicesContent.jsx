@@ -1,5 +1,7 @@
 import ClosingCta from "@/components/ClosingCta";
+import OpenFromHash from "@/components/OpenFromHash";
 import PageHeader from "@/components/PageHeader";
+import { Plus } from "@/components/icons";
 import ProcessSteps from "@/components/ProcessSteps";
 import { localePath } from "@/lib/i18n";
 import { translations } from "@/lib/translations";
@@ -21,12 +23,16 @@ export default function ServicesContent({ lang }) {
       <PageHeader title={sv.title} intro={sv.intro} align="left" />
 
       <section className={`${wrap} pb-8`}>
+        <OpenFromHash />
         {sv.categories.map((cat, i) => (
-          <details key={cat.key} id={cat.key} className="faq-item border-t border-primary">
-            <summary className="py-3">
-              <span className="type-small text-accent">{String(i + 1).padStart(2, "0")}</span>
-              <span className="type-h3 text-primary block mt-1">{cat.title}</span>
-              <span className="type-body text-on-surface-muted block mt-1">{cat.tagline}</span>
+          <details key={cat.key} id={cat.key} className="faq-item border-t border-primary scroll-mt-(--nav-h)">
+            <summary className="flex items-start justify-between gap-6 py-5">
+              <span>
+                <span className="type-small text-accent">{String(i + 1).padStart(2, "0")}</span>
+                <span className="type-h3 text-primary block mt-1">{cat.title}</span>
+                <span className="type-body text-on-surface-muted block mt-1">{cat.tagline}</span>
+              </span>
+              <Plus className="faq-icon w-6 h-6 mt-7 shrink-0 text-accent" />
             </summary>
             <ul className="grid grid-cols-2 gap-2 pb-4">
               {cat.items.map((item) => (

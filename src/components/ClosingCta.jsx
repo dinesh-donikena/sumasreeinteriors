@@ -9,12 +9,14 @@ export default function ClosingCta({ heading, text, button, href }) {
   return (
     <section className="relative overflow-hidden bg-primary text-center">
       <div className="cta-arch" aria-hidden="true" />
-      <div className={`${wrap} relative py-16 md:py-24`}>
-        <h2 className="type-h2 text-white mx-auto mb-6">
+      {/* Generous top space so the words sit inside the arch, where the
+          curve is wider than the text — no line ever crosses a word */}
+      <div className={`${wrap} relative pt-36 pb-20 sm:pt-44 md:pt-56 md:pb-28`}>
+        <h2 className="type-h2 text-white mx-auto mb-6 max-w-[36rem]">
           {heading}
         </h2>
         {text && (
-          <p className="type-body text-primary-light mx-auto mb-8">
+          <p className="type-body text-primary-light mx-auto mb-8 max-w-[34rem]">
             {text}
           </p>
         )}

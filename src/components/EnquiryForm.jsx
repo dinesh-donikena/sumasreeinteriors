@@ -2,23 +2,36 @@
 
 import { useState } from "react";
 import { track } from "@vercel/analytics";
-import { WhatsAppIcon } from "@/components/icons";
+import { MailIcon, MessageIcon, WhatsAppIcon } from "@/components/icons";
 import { SITE } from "@/lib/site";
-import { btnWhatsApp } from "@/lib/ui";
+import { btnSecondary, btnWhatsApp } from "@/lib/ui";
 
 const labelClass = "block text-xs font-semibold uppercase tracking-[0.12em] text-primary mb-2";
 const inputClass =
   "w-full min-h-11 bg-transparent py-2.5 px-0 border-0 border-b border-outline-light focus:border-accent focus:outline-none text-base transition-colors placeholder:text-outline/70";
 
-// The enquiry form hands off to WhatsApp with the message pre-filled —
-// enquiries land where the owner already replies, and there is no form
-// backend or API key that can quietly break.
+// Write once, send it your way. The same pre-filled message opens in
+// WhatsApp (the main button — it's where the owner already replies), in the
+// visitor's email app, or as an SMS for anyone without WhatsApp. Nothing is
+// sent or stored by the website itself, so there is no form backend or API
+// key that can quietly break. The email option shows only when SITE.email
+// is set.
+// Hands a mailto: or sms: link to the phone's own app, the same way tapping
+// a link would.
+function openApp(href) {
+  const a = document.createElement("a");
+  a.href = href;
+  a.click();
+}
+
 export default function EnquiryForm({ f, services }) {
   const [errors, setErrors] = useState({});
 
   function handleSubmit(e) {
     e.preventDefault();
     const form = e.currentTarget;
+    // Which button sent it: whatsapp (also the Enter key), email or sms
+    const channel = e.nativeEvent.submitter?.value || "whatsapp";
     const data = new FormData(form);
     const name = String(data.get("name") || "").trim();
     const message = String(data.get("message") || "").trim();
@@ -39,19 +52,26 @@ export default function EnquiryForm({ f, services }) {
     if (site) lines.push(`${f.waSite}: ${site}`);
     lines.push("", message);
 
-    // Counted without any of the visitor's details — only that the form
-    // was used, and on which page.
-    track("enquiry_form", { page: window.location.pathname });
+    const text = encodeURIComponent(lines.join("\n"));
 
-    window.open(
-      `${SITE.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`,
-      "_blank",
-      "noopener,noreferrer"
-    );
+    // Counted without any of the visitor's details — only that the form
+    // was used, which way, and on which page.
+    track("enquiry_form", { page: window.location.pathname, channel });
+
+    if (channel === "email") {
+      openApp(`mailto:${SITE.email}?subject=${encodeURIComponent(f.emailSubject)}&body=${text}`);
+    } else if (channel === "sms") {
+      // "?&body=" is the form both iPhone and Android Messages accept
+      openApp(`${SITE.smsHref}?&body=${text}`);
+    } else {
+      window.open(`${SITE.whatsapp}?text=${text}`, "_blank", "noopener,noreferrer");
+    }
   }
 
   return (
-    <form className="space-y-9" onSubmit={handleSubmit}>
+    // noValidate: the form checks the two required fields itself, so the
+    // message appears in the page's own language, not the browser's
+    <form className="space-y-9" onSubmit={handleSubmit} noValidate>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-9">
         <div>
           <label className={labelClass} htmlFor="name">
@@ -126,12 +146,27 @@ export default function EnquiryForm({ f, services }) {
         )}
       </div>
 
-      <div className="pt-1 space-y-4">
-        <button type="submit" className={btnWhatsApp}>
+      <div className="pt-1">
+        <button type="submit" name="channel" value="whatsapp" className={btnWhatsApp}>
           <WhatsAppIcon className="w-5 h-5" />
-          {f.send}
+          {f.sendWhatsApp}
         </button>
-        <p className="text-sm text-on-surface-muted">{f.sendNote}</p>
+
+        <p className="type-small text-on-surface-muted mt-6">{f.altHeading}</p>
+        <div className="send-alt">
+          {SITE.email && (
+            <button type="submit" name="channel" value="email" className={btnSecondary}>
+              <MailIcon className="w-4 h-4" />
+              {f.sendEmail}
+            </button>
+          )}
+          <button type="submit" name="channel" value="sms" className={btnSecondary}>
+            <MessageIcon className="w-4 h-4" />
+            {f.sendSms}
+          </button>
+        </div>
+
+        <p className="text-sm text-on-surface-muted mt-5">{f.sendNote}</p>
       </div>
     </form>
   );
