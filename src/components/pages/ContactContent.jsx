@@ -1,4 +1,5 @@
 import ClosingCta from "@/components/ClosingCta";
+import Directions from "@/components/Directions";
 import EnquiryForm from "@/components/EnquiryForm";
 import PageHeader from "@/components/PageHeader";
 import { FacebookIcon, InstagramIcon, MailIcon, PinIcon } from "@/components/icons";
@@ -90,14 +91,7 @@ export default function ContactContent({ lang }) {
                 <PinIcon className="w-5 h-5 text-accent mt-0.5 shrink-0" />
                 <div>
                   <p className="text-base text-on-surface whitespace-pre-line">{c.address}</p>
-                  <a
-                    href={SITE.mapsLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-accent border-b border-accent pb-0.5 hover:text-accent-dark hover:border-accent-dark transition-colors"
-                  >
-                    {c.openMap}
-                  </a>
+                  <Directions label={c.directions} className="mt-1" />
                 </div>
               </div>
               <div className="w-full aspect-video overflow-hidden border border-outline-light/80 bg-surface-container">

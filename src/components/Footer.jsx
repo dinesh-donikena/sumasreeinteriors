@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Directions from "@/components/Directions";
 import Logo from "@/components/Logo";
 import { FacebookIcon, InstagramIcon, MailIcon, WhatsAppIcon } from "@/components/icons";
 import { localePath } from "@/lib/i18n";
@@ -75,14 +76,7 @@ export default function Footer({ lang }) {
         <div className="lg:col-span-3">
           <span className={heading}>{t.footer.office}</span>
           <p className="text-on-surface-muted text-base leading-relaxed whitespace-pre-line">{t.footer.address}</p>
-          <a
-            href={SITE.mapsLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-primary border-b border-accent pb-0.5 hover:text-accent transition-colors"
-          >
-            {t.contact.openMap}
-          </a>
+          <Directions label={t.contact.directions} className="mt-3" />
         </div>
       </div>
 

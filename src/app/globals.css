@@ -52,31 +52,38 @@
   max-width: 100%;
 }
 .brand-lockup-bar {
-  width: 7.75rem;
+  width: 8rem;
 }
 @media (min-width: 361px) {
   .brand-lockup-bar {
-    width: 9.25rem;
+    width: 10rem;
   }
 }
 @media (min-width: 1024px) {
   .brand-lockup-bar {
-    width: 10.5rem;
+    width: 11.75rem;
   }
 }
+/* The Telugu lockup is narrower (its tagline is wider than the name), so
+   the same height needs less width. */
 .brand-lockup-bar-te {
-  width: 6.25rem;
+  width: 7.75rem;
+}
+@media (min-width: 361px) {
+  .brand-lockup-bar-te {
+    width: 8.5rem;
+  }
 }
 @media (min-width: 1024px) {
   .brand-lockup-bar-te {
-    width: 6.75rem;
+    width: 9.25rem;
   }
 }
 .brand-lockup-footer {
-  width: min(14rem, 100%);
+  width: min(15rem, 100%);
 }
 .brand-lockup-footer-te {
-  width: min(9.5rem, 100%);
+  width: min(11.75rem, 100%);
 }
 
 /* Services: the photo eases in a little on hover or tap. The reveal
@@ -1105,4 +1112,41 @@ html:has(dialog[open]) {
 :lang(te) .btn {
   text-transform: none;
   letter-spacing: 0.01em;
+}
+
+/* ── Directions: the visitor picks their own maps app ─────────── */
+.directions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 1.5rem;
+}
+.directions-label {
+  flex-basis: 100%;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-muted);
+}
+.directions-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.35em;
+  transition: color 0.2s ease;
+}
+.directions-link:hover {
+  color: var(--color-accent);
+}
+:lang(te) .directions-label {
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
 }

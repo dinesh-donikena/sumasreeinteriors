@@ -166,7 +166,6 @@ export default function EnquiryForm({ f, services }) {
           </button>
         </div>
 
-        <p className="text-sm text-on-surface-muted mt-5">{f.sendNote}</p>
       </div>
     </form>
   );

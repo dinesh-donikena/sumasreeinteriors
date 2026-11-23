@@ -9,17 +9,22 @@ export const SITE = {
   // Plain text message, for anyone who doesn't use WhatsApp.
   smsHref: "sms:+919133509293",
 
-  // ⚠ PLACEHOLDERS — replace both before this goes live. example.com is
-  // reserved, so the placeholder can never deliver a customer's email to a
-  // stranger, and facebook.com/ is just Facebook's front page. Set either to
-  // null to hide it everywhere (footer, Contact, the form's email option).
-  email: "hello@example.com",
+  // The business email (footer, Contact page and the form's email option).
+  email: "sumasreeinteriors298@gmail.com",
+  // ⚠ PLACEHOLDER — facebook.com/ is just Facebook's front page. Replace it
+  // with the business's own page once it exists, or set it to null to hide
+  // the icon everywhere (footer and Contact).
   facebook: "https://www.facebook.com/",
 
-  // Swap for the Google Business Profile link / exact street address once
-  // the owner shares it — the map pin then lands on the office itself.
-  mapsLink:
-    "https://www.google.com/maps/search/?api=1&query=Hanamakonda%2C+Warangal%2C+Telangana",
+  // Directions to the office, in whichever maps app the visitor prefers.
+  // Swap the destination for the exact street address (or the Google
+  // Business Profile) once the owner shares it, so the route ends at the
+  // office itself.
+  directions: {
+    google:
+      "https://www.google.com/maps/dir/?api=1&destination=Hanamakonda%2C+Warangal%2C+Telangana",
+    apple: "https://maps.apple.com/?daddr=Hanamakonda%2C+Warangal%2C+Telangana",
+  },
   mapsEmbed:
     "https://maps.google.com/maps?q=Hanamakonda%2C+Warangal%2C+Telangana&z=13&output=embed",
 

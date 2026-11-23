@@ -6,8 +6,10 @@ import Image from "next/image";
 // handle SVG.
 //
 // Telugu pages use the Telugu lockup: it is the same height as the English
-// one but about half as wide, so the wordmark stays readable beside the
-// language switch. The English horizontal lockup is the one on English pages.
+// one but narrower, so the wordmark stays readable beside the language
+// switch. In both, the "Interiors & Constructions" line stands on the gold
+// threshold, sized to be read on a phone. The English horizontal lockup is
+// the one on English pages.
 //
 // Header and footer sit on limewash and sand, so they use the colour lockup.
 // Pass onDark where the logo is placed on ink — that swaps in the reversed
@@ -34,7 +36,7 @@ export default function Logo({ lang = "en", large = false, onDark = false }) {
       : "brand-lockup-bar";
 
   // Intrinsic ratio only. Display width comes from the CSS class.
-  const width = te ? 432 : 849;
+  const width = te ? 538 : 849;
   const height = 201;
 
   return (
