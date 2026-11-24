@@ -1,13 +1,13 @@
 // Central place for business identity & links — edit once, updates everywhere.
 export const SITE = {
   name: "Suma Sree Interiors and Constructions",
-  whatsapp: "https://wa.me/919133509293",
+  whatsapp: "https://wa.me/917097755921",
   // The business's own Instagram page (footer, Contact page and schema).
   instagram: "https://www.instagram.com/sumasreeinteriorsconstructions/",
-  phoneDisplay: "+91 91335 09293",
-  phoneHref: "tel:+919133509293",
+  phoneDisplay: "+91 70977 55921",
+  phoneHref: "tel:+917097755921",
   // Plain text message, for anyone who doesn't use WhatsApp.
-  smsHref: "sms:+919133509293",
+  smsHref: "sms:+917097755921",
 
   // The business email (footer, Contact page and the form's email option).
   email: "sumasreeinteriors298@gmail.com",

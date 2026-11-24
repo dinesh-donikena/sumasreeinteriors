@@ -73,7 +73,7 @@ export const translations = {
         },
       ],
       ctaHeading: "Planning to build or renovate?",
-      faqLabel: "Questions",
+      faqLabel: "FAQs",
       faqHeading: "Commonly asked",
       faqNote: "Anything else on your mind?",
       faqCall: "Just give us a call.",
