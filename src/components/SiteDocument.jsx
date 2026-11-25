@@ -5,7 +5,7 @@ import FloatingContact from "@/components/FloatingContact";
 import PageTransition from "@/components/PageTransition";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import ContactClickTracking from "@/components/ContactClickTracking";
-import { SITE } from "@/lib/site";
+import { SITE, siteUrl } from "@/lib/site";
 import { translations } from "@/lib/translations";
 
 // The whole page frame — <html>, fonts, navbar, footer — shared by the
@@ -25,9 +25,9 @@ const localBusinessSchema = {
   "@type": "HomeAndConstructionBusiness",
   name: SITE.name,
   description: "Interior design and construction across Telangana and Andhra Pradesh.",
-  url: SITE.url,
+  url: siteUrl,
   telephone: SITE.phoneDisplay,
-  image: `${SITE.url}/portfolio/hanamakonda-hall-arch.jpg`,
+  image: `${siteUrl}/portfolio/hanamakonda-hall-arch.jpg`,
   address: {
     "@type": "PostalAddress",
     addressLocality: SITE.address.locality,
@@ -46,6 +46,7 @@ const localBusinessSchema = {
       "Thursday",
       "Friday",
       "Saturday",
+      "Sunday",
     ],
     opens: "09:00",
     closes: "19:00",

@@ -1,4 +1,4 @@
-import { SITE } from "@/lib/site";
+import { siteUrl } from "@/lib/site";
 
 export default function robots() {
   return {
@@ -6,6 +6,7 @@ export default function robots() {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${SITE.url}/sitemap.xml`,
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }
