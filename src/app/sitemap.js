@@ -1,4 +1,4 @@
-import { SITE } from "@/lib/site";
+import { siteUrl } from "@/lib/site";
 import { localePath } from "@/lib/i18n";
 import { PAGE_PATHS } from "@/lib/seo";
 
@@ -10,7 +10,7 @@ const PRIORITY = {
   "/testimonials": 0.7,
 };
 
-const abs = (path) => `${SITE.url}${path === "/" ? "" : path}`;
+const abs = (path) => (path === "/" ? siteUrl : `${siteUrl}${path}`);
 
 // Every page in both languages, each pointing at its twin so Google knows
 // they are the same page in English and Telugu.

@@ -1,6 +1,9 @@
 import { themeColor } from "@/lib/brand";
-import { SITE } from "@/lib/site";
+import { SITE, siteUrl } from "@/lib/site";
 import { localePath } from "@/lib/i18n";
+
+// Home is the bare site URL. Every other path keeps its leading slash.
+const absoluteUrl = (path) => (path === "/" ? siteUrl : `${siteUrl}${path}`);
 
 // What Google and link previews (WhatsApp, Facebook) show for each page, in
 // each language. Kept out of translations.js because none of it is rendered
@@ -30,14 +33,14 @@ const SHARE_DESCRIPTION =
   "Design · Construction · Renovation | Telangana & Andhra Pradesh. Office: Hanamakonda, Warangal";
 
 const ogImage = {
-  url: new URL("/og-image.png", SITE.url).href,
+  url: `${siteUrl}/og-image.png`,
   width: 1200,
   height: 630,
   alt: SHARE_ALT,
 };
 
 const twitterImage = {
-  url: new URL("/twitter-card.png", SITE.url).href,
+  url: `${siteUrl}/twitter-card.png`,
   width: 1200,
   height: 600,
   alt: SHARE_ALT,
@@ -154,7 +157,7 @@ export function notFoundMetadata(lang) {
 // Site-wide defaults, set once in each language's layout.
 export function siteMetadata(lang) {
   return {
-    metadataBase: new URL(SITE.url),
+    metadataBase: new URL(siteUrl),
     title: {
       default: `${SITE_NAME[lang]} | ${AREA[lang]}`,
       template: `%s | ${SITE_NAME[lang]}`,
@@ -210,7 +213,7 @@ export function siteMetadata(lang) {
 export function pageMetadata(lang, key) {
   const page = PAGES[key];
   const copy = page[lang];
-  const url = localePath(lang, page.path);
+  const url = absoluteUrl(localePath(lang, page.path));
   const fullTitle = copy.title
     ? `${copy.title} | ${SITE_NAME[lang]}`
     : `${SITE_NAME[lang]} | ${AREA[lang]}`;
@@ -221,9 +224,9 @@ export function pageMetadata(lang, key) {
     alternates: {
       canonical: url,
       languages: {
-        en: page.path,
-        te: localePath("te", page.path),
-        "x-default": page.path,
+        en: absoluteUrl(page.path),
+        te: absoluteUrl(localePath("te", page.path)),
+        "x-default": absoluteUrl(page.path),
       },
     },
     openGraph: {

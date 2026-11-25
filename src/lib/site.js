@@ -1,4 +1,9 @@
 // Central place for business identity & links — edit once, updates everywhere.
+
+// Official site address — no www, no trailing slash. Canonical links,
+// sitemap.xml, robots.txt, share previews and structured data all use it.
+export const siteUrl = "https://sumasreeinteriors.com";
+
 export const SITE = {
   name: "Suma Sree Interiors and Constructions",
   whatsapp: "https://wa.me/917097755921",
@@ -11,10 +16,8 @@ export const SITE = {
 
   // The business email (footer, Contact page and the form's email option).
   email: "sumasreeinteriors298@gmail.com",
-  // ⚠ PLACEHOLDER — facebook.com/ is just Facebook's front page. Replace it
-  // with the business's own page once it exists, or set it to null to hide
-  // the icon everywhere (footer and Contact).
-  facebook: "https://www.facebook.com/",
+  // The business's own Facebook page (footer and Contact page).
+  facebook: "https://www.facebook.com/profile.php?id=61595805756255",
 
   // Directions to the office, in whichever maps app the visitor prefers.
   // Swap the destination for the exact street address (or the Google
@@ -27,12 +30,6 @@ export const SITE = {
   },
   mapsEmbed:
     "https://maps.google.com/maps?q=Hanamakonda%2C+Warangal%2C+Telangana&z=13&output=embed",
-
-  // The site's own address — canonical links, sitemap.xml, robots.txt,
-  // share previews and structured data all use it. Production is the Vercel
-  // address below; switch to a custom domain once it's connected, or set
-  // NEXT_PUBLIC_SITE_URL.
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://sumasreeinteriors.vercel.app",
 
   // Address is partial on purpose — owner will supply the street line.
   address: {

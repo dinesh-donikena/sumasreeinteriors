@@ -27,6 +27,6 @@ npm start
 
 The site is hosted on [Vercel](https://vercel.com).
 
-Production: https://sumasreeinteriors.vercel.app/
+Production: https://sumasreeinteriors.com
 
-Canonical links, `sitemap.xml`, `robots.txt`, and share previews use `NEXT_PUBLIC_SITE_URL` when that variable is set. Otherwise they use the production address above.
+Canonical links, `sitemap.xml`, `robots.txt`, and share previews use `siteUrl` in `src/lib/site.js` (`https://sumasreeinteriors.com`).
