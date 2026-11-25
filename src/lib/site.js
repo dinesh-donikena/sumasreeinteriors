@@ -15,7 +15,7 @@ export const SITE = {
   smsHref: "sms:+917097755921",
 
   // The business email (footer, Contact page and the form's email option).
-  email: "sumasreeinteriors298@gmail.com",
+  email: "sumasree298@gmail.com",
   // The business's own Facebook page (footer and Contact page).
   facebook: "https://www.facebook.com/profile.php?id=61595805756255",
 

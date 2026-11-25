@@ -67,7 +67,7 @@ export default function Footer({ lang }) {
             ))}
           </div>
           {SITE.email && (
-            <a href={`mailto:${SITE.email}`} className={`${link} break-all mt-2`}>
+            <a href={`mailto:${SITE.email}`} className={`${link} whitespace-nowrap mt-2`}>
               {SITE.email}
             </a>
           )}
