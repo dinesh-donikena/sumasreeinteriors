@@ -88,7 +88,7 @@ export const translations = {
         },
         {
           q: "How is the cost decided?",
-          a: "It depends on the size of the work, the materials you choose and the condition of the site. You get the estimate in writing before any work starts.",
+          a: "It depends on the size of the work, the materials you choose and the condition of the site. We give you an estimate first, and work starts once you agree.",
         },
         {
           q: "Can we choose our own materials?",
@@ -434,7 +434,7 @@ export const translations = {
         },
         {
           q: "ఖర్చు ఎలా నిర్ణయిస్తారు?",
-          a: "పని ఎంత ఉంది, ఏ మెటీరియల్ ఎంచుకున్నారు, సైట్ పరిస్థితి ఎలా ఉంది — వీటిని బట్టి. పని మొదలయ్యే ముందే ఎస్టిమేట్ రాతపూర్వకంగా చేతికిస్తాం.",
+          a: "పని ఎంత ఉంది, ఏ మెటీరియల్ ఎంచుకున్నారు, సైట్ పరిస్థితి ఎలా ఉంది — వీటిని బట్టి. ముందుగా ఎస్టిమేట్ ఇస్తాం; మీరు ఒప్పుకున్న తర్వాతే పని మొదలుపెడతాం.",
         },
         {
           q: "మెటీరియల్ మేమే ఎంచుకోవచ్చా?",
